@@ -29,6 +29,74 @@
     .btn:hover { background:#0056c7; }
     /* Footer */
     footer { text-align:center; padding:20px; background:#0070f3; color:white; margin-top:40px; border-radius:10px 10px 0 0; }
+
+/* ===================== */
+/* MOBILE RESPONSIVENESS  */
+/* ===================== */
+
+/* 1. Navbar stacks vertically on small screens */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;       /* Stack logo, links, search */
+    align-items: flex-start;
+    gap: 10px;                     /* Space between elements */
+  }
+  nav .links {
+    display: flex;
+    flex-direction: column;        /* Links stack vertically */
+    width: 100%;
+  }
+  nav .links a {
+    margin: 5px 0;                 /* Space between each link */
+  }
+  nav .search {
+    width: 100%;
+    display: flex;
+    gap: 5px;                      /* Small gap between input and button */
+  }
+  nav .search input {
+    flex: 1;                        /* Input takes remaining width */
+  }
+}
+
+/* 2. Product grid adjustments for small screens */
+@media (max-width: 600px) {
+  #shop {
+    margin: 10px;                  /* Reduce margin on sides */
+    gap: 15px;                     /* Reduce gap between cards */
+  }
+  .card {
+    padding: 10px;                 /* Reduce padding inside cards */
+  }
+}
+
+/* 3. Hero/banner text resizing */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 1.8em;              /* Smaller heading */
+  }
+  .hero p {
+    font-size: 1em;                /* Smaller paragraph */
+  }
+}
+
+/* 4. Footer text adjustments */
+@media (max-width: 600px) {
+  footer {
+    font-size: 0.9em;              /* Slightly smaller text */
+  }
+}
+
+/* ===================== */
+/* MOBILE IMAGE SCALING  */
+/* ===================== */
+@media (max-width: 600px) {
+  .card img {
+    width: 100%;         /* Image takes full width of card */
+    height: auto;        /* Maintain aspect ratio */
+    object-fit: cover;   /* Crop if needed without distortion */
+  }
+}
   </style>
 </head>
 <body>
