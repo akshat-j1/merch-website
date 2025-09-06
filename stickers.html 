@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav>
     <div class="logo">StyleHive</div>
     <div class="links">
@@ -21,20 +21,16 @@
       <a href="anime-figures.html">Anime Figures</a>
       <a href="#contact">Contact</a>
     </div>
-    <div class="search">
-      <input type="text" placeholder="Search...">
-      <button>Go</button>
-    </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <h1>Stickers Collection</h1>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>All Stickers</h1>
     <p>Cool and trendy stickers for all your gadgets and accessories</p>
   </section>
 
   <!-- Stickers Grid -->
-  <section id="stickers">
+  <section class="stickers-grid">
     <div class="grid">
       <div class="card">
         <img src="images/sticker1.jpg" alt="Sticker 1">
@@ -69,7 +65,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     &copy; 2025 StyleHive. All rights reserved.
   </footer>
