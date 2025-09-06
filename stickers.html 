@@ -9,62 +9,70 @@
 </head>
 <body>
 
-<nav>
-  <div class="logo">StyleHive</div>
-  <div class="links">
-    <a href="index.html">Home</a>
-    <a href="#shop">Shop</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="search">
-    <input type="text" placeholder="Search...">
-    <button>Go</button>
-  </div>
-</nav>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">StyleHive</div>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="posters.html">Posters</a>
+      <a href="stickers.html">Stickers</a>
+      <a href="hoodies.html">Hoodies</a>
+      <a href="couple-shirts.html">Couple Shirts</a>
+      <a href="anime-figures.html">Anime Figures</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search...">
+      <button>Go</button>
+    </div>
+  </nav>
 
-<section class="hero" id="home">
-  <h1>Stickers Collection</h1>
-  <p>Check out all our trendy stickers</p>
-</section>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h1>Stickers Collection</h1>
+    <p>Cool and trendy stickers for all your gadgets and accessories</p>
+  </section>
 
-<section id="stickers">
-  <div class="grid">
-    <div class="card">
-      <img src="images/sticker1.jpg" alt="Sticker 1">
-      <h3>Sticker 1</h3>
-      <p>₹199</p>
-      <a href="https://rzp.io/l/YOUR-LINK6" class="btn">Buy Now</a>
+  <!-- Stickers Grid -->
+  <section id="stickers">
+    <div class="grid">
+      <div class="card">
+        <img src="images/sticker1.jpg" alt="Sticker 1">
+        <h3>Sticker 1</h3>
+        <p>₹199</p>
+        <a href="https://rzp.io/l/YOUR-LINK6" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="images/sticker2.jpg" alt="Sticker 2">
+        <h3>Sticker 2</h3>
+        <p>₹199</p>
+        <a href="https://rzp.io/l/YOUR-LINK7" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="images/sticker3.jpg" alt="Sticker 3">
+        <h3>Sticker 3</h3>
+        <p>₹199</p>
+        <a href="https://rzp.io/l/YOUR-LINK8" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="images/sticker4.jpg" alt="Sticker 4">
+        <h3>Sticker 4</h3>
+        <p>₹199</p>
+        <a href="https://rzp.io/l/YOUR-LINK9" class="btn">Buy Now</a>
+      </div>
+      <div class="card">
+        <img src="images/sticker5.jpg" alt="Sticker 5">
+        <h3>Sticker 5</h3>
+        <p>₹199</p>
+        <a href="https://rzp.io/l/YOUR-LINK10" class="btn">Buy Now</a>
+      </div>
     </div>
-    <div class="card">
-      <img src="images/sticker2.jpg" alt="Sticker 2">
-      <h3>Sticker 2</h3>
-      <p>₹199</p>
-      <a href="https://rzp.io/l/YOUR-LINK7" class="btn">Buy Now</a>
-    </div>
-    <div class="card">
-      <img src="images/sticker3.jpg" alt="Sticker 3">
-      <h3>Sticker 3</h3>
-      <p>₹199</p>
-      <a href="https://rzp.io/l/YOUR-LINK8" class="btn">Buy Now</a>
-    </div>
-    <div class="card">
-      <img src="images/sticker4.jpg" alt="Sticker 4">
-      <h3>Sticker 4</h3>
-      <p>₹199</p>
-      <a href="https://rzp.io/l/YOUR-LINK9" class="btn">Buy Now</a>
-    </div>
-    <div class="card">
-      <img src="images/sticker5.jpg" alt="Sticker 5">
-      <h3>Sticker 5</h3>
-      <p>₹199</p>
-      <a href="https://rzp.io/l/YOUR-LINK10" class="btn">Buy Now</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  &copy; 2025 StyleHive. All rights reserved.
-</footer>
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 StyleHive. All rights reserved.
+  </footer>
 
 </body>
 </html>
