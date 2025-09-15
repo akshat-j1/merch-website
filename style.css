@@ -4,8 +4,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: #f9f9f9;
-  color: #333;
+  background: #1a1a2e; /* evening dark background */
+  color: #e0e0e0;
 }
 
 a {
@@ -21,25 +21,27 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background: #0070f3;
+  background: #162447; /* darker evening tone */
   color: white;
   flex-wrap: wrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 nav .logo {
   font-size: 1.8em;
   font-weight: 600;
+  color: #e43f5a; /* subtle warm accent */
 }
 
 nav .links a {
   margin: 0 12px;
-  color: white;
+  color: #f0f0f0;
   font-weight: 500;
-  transition: color 0.2s;
+  transition: color 0.3s;
 }
 
 nav .links a:hover {
-  color: #ffde59;
+  color: #ffde59; /* highlight on hover */
 }
 
 nav .search input {
@@ -52,7 +54,7 @@ nav .search button {
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
-  background: #0056c7;
+  background: #e43f5a;
   color: white;
   cursor: pointer;
 }
@@ -61,15 +63,16 @@ nav .search button {
    HERO / BANNER
 ========================== */
 .hero {
-  background: #e0f0ff;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   padding: 60px 20px;
   text-align: center;
   border-radius: 10px;
   margin: 20px;
+  color: #fff;
 }
 
 .hero h1 {
-  font-size: 2.5em;
+  font-size: 2.8em;
   margin-bottom: 10px;
 }
 
@@ -88,46 +91,51 @@ nav .search button {
 }
 
 .card {
-  background: white;
+  background: linear-gradient(145deg, #1f1f2e, #2a2a3f);
   padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
 }
 
 .card img {
   width: 100%;
   border-radius: 8px;
   object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
 .card h2, .card h3 {
   margin: 10px 0 5px;
+  color: #fff;
 }
 
 .card p {
   font-weight: 600;
   margin: 5px 0;
+  color: #ffde59;
 }
 
 .btn {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 15px;
-  background: #0070f3;
+  background: #e43f5a;
   color: white;
   border-radius: 5px;
-  transition: background 0.2s;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
 }
 
 .btn:hover {
-  background: #0056c7;
+  background: #ff6b81;
+  transform: translateY(-2px);
 }
 
 /* ==========================
@@ -136,6 +144,7 @@ nav .search button {
 #contact, #customize {
   margin: 40px 20px;
   text-align: center;
+  color: #fff;
 }
 
 #customize form input,
@@ -145,19 +154,21 @@ nav .search button {
   margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background: #2a2a3f;
+  color: #fff;
 }
 
 #customize form button {
   margin-top: 10px;
   padding: 10px 15px;
-  background: #0070f3;
+  background: #e43f5a;
   color: white;
   border-radius: 5px;
   cursor: pointer;
 }
 
 #customize form button:hover {
-  background: #0056c7;
+  background: #ff6b81;
 }
 
 /* ==========================
@@ -166,10 +177,11 @@ nav .search button {
 footer {
   text-align: center;
   padding: 20px;
-  background: #0070f3;
-  color: white;
+  background: #162447;
+  color: #fff;
   margin-top: 40px;
   border-radius: 10px 10px 0 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
 }
 
 /* ==========================
