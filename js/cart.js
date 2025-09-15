@@ -90,3 +90,16 @@ export function attachClearCartListener() {
         });
     }
 }
+
+// Attach listeners for all "Add to Cart" buttons
+export function attachAddToCartListeners() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const name = btn.dataset.name;
+            const price = btn.dataset.price;
+            const img = btn.dataset.img;
+            addToCart(name, price, img);
+        });
+    });
+}
