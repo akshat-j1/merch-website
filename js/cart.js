@@ -1,22 +1,22 @@
 // cart.js
 
-// Elements
-const cartCount = document.querySelectorAll('#cart-count'); // support multiple spans
+// Get elements
+const cartCount = document.getElementById('cart-count');
 const cartItemsContainer = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 const clearCartBtn = document.getElementById('clear-cart');
 
-// Load cart from localStorage
+// Load cart from localStorage or empty array
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Update cart count in all navbars
+// Update cart count in navbar
 function updateCartCount() {
-    cartCount.forEach(span => {
-        if (span) span.textContent = cart.length;
-    });
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
 }
 
-// Render cart items on cart.html
+// Render cart items (for cart.html)
 function renderCart() {
     if (!cartItemsContainer || !cartTotal) return;
 
@@ -47,7 +47,7 @@ function renderCart() {
 
     cartTotal.textContent = total.toFixed(2);
 
-    // Remove item functionality
+    // Add remove button functionality
     const removeBtns = document.querySelectorAll('.remove-btn');
     removeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -60,14 +60,14 @@ function renderCart() {
     });
 }
 
-// Add item to cart (works on product pages)
+// Add item to cart (for product pages)
 function addToCart(name, price, img) {
     cart.push({ name, price, img });
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
 }
 
-// Clear cart
+// Clear entire cart
 if (clearCartBtn) {
     clearCartBtn.addEventListener('click', () => {
         cart = [];
@@ -77,18 +77,14 @@ if (clearCartBtn) {
     });
 }
 
-// Add event listeners to all Add-to-Cart buttons
+// Event listeners for add-to-cart buttons
 const addToCartButtons = document.querySelectorAll('.add-to-cart');
 addToCartButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const name = btn.dataset.name;
         const price = btn.dataset.price;
         const img = btn.dataset.img;
-        if (name && price && img) {
-            addToCart(name, price, img);
-        } else {
-            console.warn('Missing product data for Add to Cart button');
-        }
+        addToCart(name, price, img);
     });
 });
 
