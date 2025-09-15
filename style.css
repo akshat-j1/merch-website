@@ -44,7 +44,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: #1D4ED8;
+  background: #212529;
   color: white;
   flex-wrap: wrap;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -57,6 +57,7 @@ nav .logo {
   font-size: 2em;
   font-weight: 800;
   letter-spacing: -1px;
+  color: #FF6B6B; /* Pink color for the logo */
 }
 
 nav .links {
@@ -76,13 +77,13 @@ nav .links a {
 nav .links a:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
-  color: #F59E0B;
+  color: #FFD166;
 }
 
 /* Auth Buttons and Label */
 #auth-wrap .btn {
-  background: #F59E0B;
-  color: #1D4ED8;
+  background: #FFD166;
+  color: #212529;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -92,7 +93,7 @@ nav .links a:hover {
 }
 
 #auth-wrap .btn:hover {
-  background: #D97706;
+  background: #E6B800;
   transform: translateY(-2px) scale(1.02);
 }
 
@@ -106,7 +107,7 @@ nav .links a:hover {
    HERO / BANNER
 ========================== */
 .hero {
-  background: linear-gradient(135deg, #1D4ED8, #3B82F6);
+  background: linear-gradient(135deg, #FF6B6B, #FF9B9B);
   color: white;
   padding: 100px 24px;
   text-align: center;
@@ -178,14 +179,14 @@ nav .links a:hover {
 .card p {
   font-weight: 700;
   margin: 0 0 16px;
-  color: #F59E0B;
+  color: #FF6B6B;
   font-size: 1.2em;
 }
 
 .btn {
   display: inline-block;
   padding: 14px 24px;
-  background: #1D4ED8;
+  background: #212529;
   color: white;
   border-radius: 10px;
   transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -196,7 +197,7 @@ nav .links a:hover {
 }
 
 .btn:hover {
-  background: #1E40AF;
+  background: #495057;
   transform: translateY(-2px) scale(1.02);
 }
 
@@ -297,7 +298,7 @@ nav .links a:hover {
 #cart-total {
   font-size: 1.8em;
   font-weight: 800;
-  color: #F59E0B;
+  color: #FF6B6B;
   margin-top: 24px;
 }
 
@@ -326,7 +327,7 @@ nav .links a:hover {
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: #F59E0B;
+  background: #FF6B6B;
   border-radius: 2px;
 }
 
@@ -353,7 +354,7 @@ nav .links a:hover {
 #customize form input:focus,
 #customize form textarea:focus {
   outline: none;
-  border-color: #1D4ED8;
+  border-color: #FF6B6B;
 }
 
 #customize form textarea {
@@ -363,7 +364,7 @@ nav .links a:hover {
 #customize form button {
   font-weight: 600;
   padding: 14px 32px;
-  background: #1D4ED8;
+  background: #FF6B6B;
   color: white;
   border-radius: 10px;
   cursor: pointer;
@@ -372,7 +373,7 @@ nav .links a:hover {
 }
 
 #customize form button:hover {
-  background: #1E40AF;
+  background: #FF4D4D;
   transform: translateY(-2px);
 }
 
