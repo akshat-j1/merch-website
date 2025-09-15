@@ -57,6 +57,21 @@ nav .search button {
   cursor: pointer;
 }
 
+/* Auth Buttons and Label */
+#auth-wrap .btn {
+  background: #ffde59;
+  color: #0070f3;
+  font-weight: bold;
+}
+
+#auth-wrap .btn:hover {
+  background: #f0c808;
+}
+
+#user-label {
+  color: white;
+}
+
 /* ==========================
    HERO / BANNER
 ========================== */
@@ -129,6 +144,60 @@ nav .search button {
 .btn:hover {
   background: #0056c7;
 }
+
+/* ==========================
+   CART PAGE STYLES
+========================== */
+#cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+.cart-item img {
+  margin-right: 15px;
+  border-radius: 4px;
+}
+.cart-item .details {
+  flex: 1;
+}
+.cart-item .details h4 {
+  margin: 0 0 5px 0;
+}
+.cart-item .details p {
+  margin: 0 0 5px 0;
+}
+.cart-item .remove-btn {
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cart-item .remove-btn:hover {
+  background-color: #e60000;
+}
+#clear-cart {
+  margin-top: 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#clear-cart:hover {
+  background-color: #555;
+}
+
 
 /* ==========================
    CONTACT & CUSTOMIZE FORM
