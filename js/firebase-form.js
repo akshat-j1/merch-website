@@ -1,3 +1,5 @@
+// firebase-form.js
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-firestore.js";
 import { getAuth, signInAnonymously, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-auth.js";
@@ -16,15 +18,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-
-/* ---------- Sign in anonymously if no user ---------- */
-onAuthStateChanged(auth, user => {
-  if (!user) {
-    signInAnonymously(auth)
-      .then(() => console.log("Signed in anonymously"))
-      .catch(err => console.error("Anonymous auth failed:", err));
-  }
-});
 
 /* ---------- Utility: show toast ---------- */
 export function showToast(msg, isError = false) {
@@ -125,7 +118,7 @@ export function initAuthUI(navSelector = 'nav .links') {
 }
 
 /* ---------- Customize Form ---------- */
-export function initCustomizeForm(formSelector = '#customize form') {
+export function initCustomizeForm(formSelector = '#customize-form') {
   const form = document.querySelector(formSelector);
   if (!form) {
     console.warn('Customize form not found:', formSelector);
