@@ -398,14 +398,19 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    padding-bottom: 24px; /* Add some padding to separate from content */
   }
+
   nav .links {
     flex-direction: column;
     width: 100%;
     align-items: flex-start;
   }
+
   nav .links a, #auth-wrap {
     margin: 4px 0;
+    width: 100%; /* Make links full width */
+    text-align: left;
   }
 }
 
@@ -429,3 +434,4 @@ footer {
     padding: 20px;
   }
 }
+
