@@ -34,8 +34,7 @@
 
   <!-- Products Preview Section -->
   <div id="shop">
-
-    <!-- POSTERS -->
+    <!-- Posters Section -->
     <section id="posters">
       <h2>Posters</h2>
       <div class="grid">
@@ -66,7 +65,7 @@
       </div>
     </section>
 
-    <!-- STICKERS -->
+    <!-- Stickers Section -->
     <section id="stickers">
       <h2>Stickers</h2>
       <div class="grid">
@@ -97,7 +96,7 @@
       </div>
     </section>
 
-    <!-- HOODIES -->
+    <!-- Hoodies Section -->
     <section id="hoodies">
       <h2>Hoodies</h2>
       <div class="grid">
@@ -115,20 +114,13 @@
           <a href="https://rzp.io/l/YOUR-LINK12" class="btn">Buy Now</a>
           <button class="btn add-to-cart" data-name="Hoodie 2" data-price="1499" data-img="images/hoodie2.jpeg">Add to Cart</button>
         </div>
-        <div class="card">
-          <img src="images/hoodie3.jpeg" alt="Hoodie 3">
-          <h3>Hoodie 3</h3>
-          <p>₹1499</p>
-          <a href="https://rzp.io/l/YOUR-LINK13" class="btn">Buy Now</a>
-          <button class="btn add-to-cart" data-name="Hoodie 3" data-price="1499" data-img="images/hoodie3.jpeg">Add to Cart</button>
-        </div>
       </div>
       <div class="show-more-container">
         <a href="hoodies.html" class="btn">Show More Hoodies</a>
       </div>
     </section>
 
-    <!-- COUPLE SHIRTS -->
+    <!-- Couple Shirts Section -->
     <section id="couple-shirts">
       <h2>Couple Shirts</h2>
       <div class="grid">
@@ -139,27 +131,13 @@
           <a href="https://rzp.io/l/YOUR-LINK16" class="btn">Buy Now</a>
           <button class="btn add-to-cart" data-name="Couple Shirt 1" data-price="999" data-img="images/coupleshirt1.jpeg">Add to Cart</button>
         </div>
-        <div class="card">
-          <img src="images/coupleshirt2.jpeg" alt="Couple Shirt 2">
-          <h3>Couple Shirt 2</h3>
-          <p>₹999</p>
-          <a href="https://rzp.io/l/YOUR-LINK17" class="btn">Buy Now</a>
-          <button class="btn add-to-cart" data-name="Couple Shirt 2" data-price="999" data-img="images/coupleshirt2.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/coupleshirt3.jpeg" alt="Couple Shirt 3">
-          <h3>Couple Shirt 3</h3>
-          <p>₹999</p>
-          <a href="https://rzp.io/l/YOUR-LINK18" class="btn">Buy Now</a>
-          <button class="btn add-to-cart" data-name="Couple Shirt 3" data-price="999" data-img="images/coupleshirt3.jpeg">Add to Cart</button>
-        </div>
       </div>
       <div class="show-more-container">
         <a href="couple-shirts.html" class="btn">Show More Couple Shirts</a>
       </div>
     </section>
 
-    <!-- ANIME FIGURES -->
+    <!-- Anime Figures Section -->
     <section id="anime-figures">
       <h2>Anime Figures</h2>
       <div class="grid">
@@ -170,26 +148,11 @@
           <a href="https://rzp.io/l/YOUR-LINK21" class="btn">Buy Now</a>
           <button class="btn add-to-cart" data-name="Anime Figure 1" data-price="1499" data-img="images/animefigure1.jpeg">Add to Cart</button>
         </div>
-        <div class="card">
-          <img src="images/animefigure2.jpeg" alt="Anime Figure 2">
-          <h3>Anime Figure 2</h3>
-          <p>₹1499</p>
-          <a href="https://rzp.io/l/YOUR-LINK22" class="btn">Buy Now</a>
-          <button class="btn add-to-cart" data-name="Anime Figure 2" data-price="1499" data-img="images/animefigure2.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/animefigure3.jpeg" alt="Anime Figure 3">
-          <h3>Anime Figure 3</h3>
-          <p>₹1499</p>
-          <a href="https://rzp.io/l/YOUR-LINK23" class="btn">Buy Now</a>
-          <button class="btn add-to-cart" data-name="Anime Figure 3" data-price="1499" data-img="images/animefigure3.jpeg">Add to Cart</button>
-        </div>
       </div>
       <div class="show-more-container">
         <a href="anime-figures.html" class="btn">Show More Anime Figures</a>
       </div>
     </section>
-
   </div>
 
   <!-- Customize Request Form -->
@@ -213,12 +176,49 @@
     <p>Instagram: <a href="https://instagram.com/stylehive" target="_blank">@stylehive</a></p>
   </section>
 
-  <!-- Firebase Script -->
+  <footer>
+    &copy; 2025 StyleHive. All rights reserved.
+  </footer>
+
+  <!-- Firebase & Customize Form Script -->
   <script type="module">
-    // Import Firebase
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 
-    // Firebase config
     const firebaseConfig = {
-      apiKey: "AIzaSyBy8kzUGY8BxnzPHwVVyCQP_3JNa3fOnsY
+      apiKey: "AIzaSyBy8kzUGY8BxnzPHwVVyCQP_3JNa3fOnsY",
+      authDomain: "stylehive-merch.firebaseapp.com",
+      projectId: "stylehive-merch",
+      storageBucket: "stylehive-merch.appspot.com",
+      messagingSenderId: "739353469704",
+      appId: "1:739353469704:web:afa16cadbcf68a76b0c2bd"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const customizeForm = document.getElementById('customize-form');
+    customizeForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = customizeForm.name.value;
+      const email = customizeForm.email.value;
+      const request = customizeForm.request.value;
+
+      try {
+        await addDoc(collection(db, "custom_requests"), {
+          name: name,
+          email: email,
+          request: request,
+          timestamp: new Date()
+        });
+        alert("Your request has been sent successfully!");
+        customizeForm.reset();
+      } catch (err) {
+        console.error("Error sending request: ", err);
+        alert("There was an error sending your request. Try again!");
+      }
+    });
+  </script>
+
+</body>
+</html>
