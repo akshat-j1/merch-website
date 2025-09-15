@@ -15,11 +15,16 @@ function setupScrollAnimations() {
     });
   }, {
     rootMargin: '0px',
-    threshold: 0.2 // Adjust as needed
+    threshold: 0.2
   });
 
   document.querySelectorAll('.fade-in-section').forEach(section => {
-    observer.observe(section);
+    // Check if the element is already in the viewport on page load
+    if (section.getBoundingClientRect().top < window.innerHeight) {
+      section.classList.add('is-visible');
+    } else {
+      observer.observe(section);
+    }
   });
 }
 
