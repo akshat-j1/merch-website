@@ -50,17 +50,17 @@ function renderCart() {
     // Add remove button functionality
     const removeBtns = document.querySelectorAll('.remove-btn');
     removeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.onclick = () => {
             const idx = parseInt(btn.dataset.index);
             cart.splice(idx, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
             renderCart();
-        });
+        };
     });
 }
 
-// Add item to cart (for product pages)
+// Add item to cart
 function addToCart(name, price, img) {
     cart.push({ name, price, img });
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -69,25 +69,35 @@ function addToCart(name, price, img) {
 
 // Clear entire cart
 if (clearCartBtn) {
-    clearCartBtn.addEventListener('click', () => {
+    clearCartBtn.onclick = () => {
         cart = [];
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCartCount();
         renderCart();
-    });
+    };
 }
 
-// Event listeners for add-to-cart buttons
-const addToCartButtons = document.querySelectorAll('.add-to-cart');
-addToCartButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const name = btn.dataset.name;
-        const price = btn.dataset.price;
-        const img = btn.dataset.img;
-        addToCart(name, price, img);
+// Attach add-to-cart listeners **safely**
+function attachAddToCartListeners() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(btn => {
+        // Remove previous listeners if any
+        btn.replaceWith(btn.cloneNode(true));
     });
-});
+
+    const freshButtons = document.querySelectorAll('.add-to-cart');
+    freshButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const name = btn.dataset.name;
+            const price = btn.dataset.price;
+            const img = btn.dataset.img;
+            addToCart(name, price, img);
+        });
+    });
+}
 
 // Initial load
 updateCartCount();
 renderCart();
+attachAddToCartListeners();
