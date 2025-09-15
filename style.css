@@ -24,6 +24,18 @@ section {
   padding: 60px 24px;
 }
 
+/* On-scroll animation for sections */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ==========================
    NAVBAR
 ========================== */
@@ -32,7 +44,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: #1870C2;
+  background: #1D4ED8;
   color: white;
   flex-wrap: wrap;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -64,13 +76,13 @@ nav .links a {
 nav .links a:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
-  color: #FFD166;
+  color: #F59E0B;
 }
 
 /* Auth Buttons and Label */
 #auth-wrap .btn {
-  background: #FFD166;
-  color: #1870C2;
+  background: #F59E0B;
+  color: #1D4ED8;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -80,7 +92,7 @@ nav .links a:hover {
 }
 
 #auth-wrap .btn:hover {
-  background: #E6B800;
+  background: #D97706;
   transform: translateY(-2px) scale(1.02);
 }
 
@@ -94,7 +106,7 @@ nav .links a:hover {
    HERO / BANNER
 ========================== */
 .hero {
-  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+  background: linear-gradient(135deg, #1D4ED8, #3B82F6);
   color: white;
   padding: 100px 24px;
   text-align: center;
@@ -166,14 +178,14 @@ nav .links a:hover {
 .card p {
   font-weight: 700;
   margin: 0 0 16px;
-  color: #FF6B6B;
+  color: #F59E0B;
   font-size: 1.2em;
 }
 
 .btn {
   display: inline-block;
   padding: 14px 24px;
-  background: #1870C2;
+  background: #1D4ED8;
   color: white;
   border-radius: 10px;
   transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -184,7 +196,7 @@ nav .links a:hover {
 }
 
 .btn:hover {
-  background: #1459A1;
+  background: #1E40AF;
   transform: translateY(-2px) scale(1.02);
 }
 
@@ -285,7 +297,7 @@ nav .links a:hover {
 #cart-total {
   font-size: 1.8em;
   font-weight: 800;
-  color: #FF6B6B;
+  color: #F59E0B;
   margin-top: 24px;
 }
 
@@ -314,7 +326,7 @@ nav .links a:hover {
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: #FFD166;
+  background: #F59E0B;
   border-radius: 2px;
 }
 
@@ -341,7 +353,7 @@ nav .links a:hover {
 #customize form input:focus,
 #customize form textarea:focus {
   outline: none;
-  border-color: #1870C2;
+  border-color: #1D4ED8;
 }
 
 #customize form textarea {
@@ -351,7 +363,7 @@ nav .links a:hover {
 #customize form button {
   font-weight: 600;
   padding: 14px 32px;
-  background: #1870C2;
+  background: #1D4ED8;
   color: white;
   border-radius: 10px;
   cursor: pointer;
@@ -360,7 +372,7 @@ nav .links a:hover {
 }
 
 #customize form button:hover {
-  background: #1459A1;
+  background: #1E40AF;
   transform: translateY(-2px);
 }
 
