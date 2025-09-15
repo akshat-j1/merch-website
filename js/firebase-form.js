@@ -1,7 +1,7 @@
 // firebase-form.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-firestore.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-auth.js";
+import { getAuth, signInAnonymously, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-auth.js";
 
 /* ---------- Firebase config ---------- */
 const firebaseConfig = {
@@ -17,6 +17,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+
+/* ---------- Sign in anonymously if no user signed in ---------- */
+onAuthStateChanged(auth, user => {
+  if (!user) {
+    signInAnonymously(auth)
+      .then(() => console.log("Signed in anonymously"))
+      .catch(err => console.error("Anonymous auth failed:", err));
+  }
+});
 
 /* ---------- Utility: show toast ---------- */
 export function showToast(msg, isError = false) {
@@ -82,7 +91,7 @@ export function initAuthUI(navSelector = 'nav .links') {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      showToast('Signed in');
+      showToast('Signed in with Google');
     } catch (err) {
       console.error(err);
       showToast('Sign-in failed', true);
@@ -93,6 +102,8 @@ export function initAuthUI(navSelector = 'nav .links') {
     try {
       await signOut(auth);
       showToast('Signed out');
+      // Automatically sign in anonymously after Google sign-out
+      signInAnonymously(auth).catch(err => console.error("Anonymous auth failed:", err));
     } catch (err) {
       console.error(err);
       showToast('Sign-out failed', true);
@@ -101,10 +112,10 @@ export function initAuthUI(navSelector = 'nav .links') {
 
   onAuthStateChanged(auth, user => {
     if (user) {
-      loginBtn.style.display = 'none';
+      loginBtn.style.display = user.isAnonymous ? 'inline-block' : 'none';
       logoutBtn.style.display = 'inline-block';
       userLabel.style.display = 'inline-block';
-      userLabel.textContent = user.email || user.displayName || 'Signed in';
+      userLabel.textContent = user.isAnonymous ? 'Guest' : (user.email || user.displayName);
     } else {
       loginBtn.style.display = 'inline-block';
       logoutBtn.style.display = 'none';
@@ -136,12 +147,19 @@ export function initCustomizeForm(formSelector = '#customize form') {
     if (submitBtn) submitBtn.disabled = true;
 
     try {
+      const currentUser = auth.currentUser;
       const payload = {
         name,
         email,
         request: requestText,
         createdAt: serverTimestamp(),
-        user: auth.currentUser ? { uid: auth.currentUser.uid, email: auth.currentUser.email } : null
+        user: currentUser
+          ? {
+              uid: currentUser.uid,
+              email: currentUser.email || null,
+              type: currentUser.isAnonymous ? 'Guest' : 'Google'
+            }
+          : null
       };
       await addDoc(collection(db, 'custom_requests'), payload);
 
