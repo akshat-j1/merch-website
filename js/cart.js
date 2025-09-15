@@ -10,14 +10,14 @@ const clearCartBtn = document.getElementById('clear-cart');
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Update cart count in navbar
-function updateCartCount() {
+export function updateCartCount() {
     if (cartCount) {
         cartCount.textContent = cart.length;
     }
 }
 
 // Render cart items (for cart.html)
-function renderCart() {
+export function renderCart() {
     if (!cartItemsContainer || !cartTotal) return;
 
     cartItemsContainer.innerHTML = '';
@@ -61,7 +61,7 @@ function renderCart() {
 }
 
 // Add item to cart
-function addToCart(name, price, img) {
+export function addToCart(name, price, img) {
     cart.push({ name, price, img });
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
@@ -77,17 +77,10 @@ if (clearCartBtn) {
     };
 }
 
-// Attach add-to-cart listeners **safely**
-function attachAddToCartListeners() {
+// Attach add-to-cart listeners
+export function attachAddToCartListeners() {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
     addToCartButtons.forEach(btn => {
-        // Remove previous listeners if any
-        btn.replaceWith(btn.cloneNode(true));
-    });
-
-    const freshButtons = document.querySelectorAll('.add-to-cart');
-    freshButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const name = btn.dataset.name;
             const price = btn.dataset.price;
@@ -96,8 +89,3 @@ function attachAddToCartListeners() {
         });
     });
 }
-
-// Initial load
-updateCartCount();
-renderCart();
-attachAddToCartListeners();
