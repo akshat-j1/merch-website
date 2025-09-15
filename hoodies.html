@@ -9,109 +9,88 @@
 </head>
 <body>
 
+<!-- Navigation Bar -->
 <nav>
   <div class="logo">StyleHive</div>
   <div class="links">
     <a href="index.html">Home</a>
-    <a href="#shop">Shop</a>
+    <a href="posters.html">Posters</a>
+    <a href="stickers.html">Stickers</a>
+    <a href="hoodies.html">Hoodies</a>
+    <a href="couple-shirts.html">Couple Shirts</a>
+    <a href="anime-figures.html">Anime Figures</a>
     <a href="#contact">Contact</a>
-    <!-- Cart link -->
-    <a href="cart.html" id="cart-link">
-      🛒 Cart (<span id="cart-count">0</span>)
-    </a>
-  </div>
-  <div class="search">
-    <input type="text" placeholder="Search...">
-    <button>Go</button>
+    <a href="cart.html">🛒 Cart</a>
   </div>
 </nav>
 
-<section class="hero" id="home">
+<!-- Hero Section -->
+<section class="hero">
   <h1>Hoodies Collection</h1>
-  <p>Stay cozy & stylish with our hoodies</p>
+  <p>Stay warm and stylish with our premium hoodies</p>
 </section>
 
+<!-- Hoodies Grid -->
 <section id="hoodies">
   <div class="grid">
     <div class="card">
       <img src="images/hoodie1.jpeg" alt="Hoodie 1">
       <h3>Hoodie 1</h3>
       <p>₹1499</p>
-      <!-- Add-to-Cart button -->
-      <button class="add-to-cart-btn" 
-              data-id="hoodie1" 
-              data-name="Hoodie 1" 
-              data-price="1499" 
-              data-image="images/hoodie1.jpeg">
-        Add to Cart
-      </button>
       <a href="https://rzp.io/l/YOUR-LINK11" class="btn">Buy Now</a>
+      <button class="btn add-to-cart"
+        data-name="Hoodie 1"
+        data-price="1499"
+        data-img="images/hoodie1.jpeg">Add to Cart</button>
     </div>
-
     <div class="card">
       <img src="images/hoodie2.jpeg" alt="Hoodie 2">
       <h3>Hoodie 2</h3>
       <p>₹1499</p>
-      <button class="add-to-cart-btn" 
-              data-id="hoodie2" 
-              data-name="Hoodie 2" 
-              data-price="1499" 
-              data-image="images/hoodie2.jpeg">
-        Add to Cart
-      </button>
       <a href="https://rzp.io/l/YOUR-LINK12" class="btn">Buy Now</a>
+      <button class="btn add-to-cart"
+        data-name="Hoodie 2"
+        data-price="1499"
+        data-img="images/hoodie2.jpeg">Add to Cart</button>
     </div>
-
     <div class="card">
       <img src="images/hoodie3.jpeg" alt="Hoodie 3">
       <h3>Hoodie 3</h3>
       <p>₹1499</p>
-      <button class="add-to-cart-btn" 
-              data-id="hoodie3" 
-              data-name="Hoodie 3" 
-              data-price="1499" 
-              data-image="images/hoodie3.jpeg">
-        Add to Cart
-      </button>
       <a href="https://rzp.io/l/YOUR-LINK13" class="btn">Buy Now</a>
+      <button class="btn add-to-cart"
+        data-name="Hoodie 3"
+        data-price="1499"
+        data-img="images/hoodie3.jpeg">Add to Cart</button>
     </div>
-
     <div class="card">
       <img src="images/hoodie4.jpeg" alt="Hoodie 4">
       <h3>Hoodie 4</h3>
       <p>₹1499</p>
-      <button class="add-to-cart-btn" 
-              data-id="hoodie4" 
-              data-name="Hoodie 4" 
-              data-price="1499" 
-              data-image="images/hoodie4.jpeg">
-        Add to Cart
-      </button>
       <a href="https://rzp.io/l/YOUR-LINK14" class="btn">Buy Now</a>
+      <button class="btn add-to-cart"
+        data-name="Hoodie 4"
+        data-price="1499"
+        data-img="images/hoodie4.jpeg">Add to Cart</button>
     </div>
-
     <div class="card">
       <img src="images/hoodie5.jpeg" alt="Hoodie 5">
       <h3>Hoodie 5</h3>
       <p>₹1499</p>
-      <button class="add-to-cart-btn" 
-              data-id="hoodie5" 
-              data-name="Hoodie 5" 
-              data-price="1499" 
-              data-image="images/hoodie5.jpeg">
-        Add to Cart
-      </button>
       <a href="https://rzp.io/l/YOUR-LINK15" class="btn">Buy Now</a>
+      <button class="btn add-to-cart"
+        data-name="Hoodie 5"
+        data-price="1499"
+        data-img="images/hoodie5.jpeg">Add to Cart</button>
     </div>
   </div>
 </section>
 
+<!-- Footer -->
 <footer>
   &copy; 2025 StyleHive. All rights reserved.
 </footer>
 
-<!-- Include cart JS -->
-<script src="cart.js"></script>
-
+<script src="js/cart.js"></script>
 </body>
 </html>
