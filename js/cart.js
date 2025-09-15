@@ -12,11 +12,13 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 // Update cart count in the navbar
 export function updateCartCount() {
     if (cartCount) {
-        cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+        // Correctly handle items without a quantity property
+        const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+        cartCount.textContent = totalItems;
     }
 }
 
-// Render cart items for the cart page (cart.html)
+// Render cart items for the cart page (for cart.html)
 export function renderCart() {
     if (!cartItemsContainer || !cartTotal) {
         return;
@@ -34,15 +36,15 @@ export function renderCart() {
 
     cart.forEach((item, index) => {
         const itemPrice = parseFloat(item.price);
-        total += itemPrice * item.quantity;
+        total += itemPrice * (item.quantity || 1);
         const div = document.createElement('div');
         div.className = 'cart-item';
         div.innerHTML = `
             <img src="${item.img}" alt="${item.name}" width="80">
             <div class="details">
                 <h4>${item.name}</h4>
-                <p>₹${itemPrice.toFixed(2)} x ${item.quantity}</p>
-                <p>Total: ₹${(itemPrice * item.quantity).toFixed(2)}</p>
+                <p>₹${itemPrice.toFixed(2)} x ${item.quantity || 1}</p>
+                <p>Total: ₹${(itemPrice * (item.quantity || 1)).toFixed(2)}</p>
                 <button class="remove-btn" data-index="${index}">Remove</button>
             </div>
         `;
@@ -68,13 +70,26 @@ export function addToCart(name, price, img) {
     const existingItem = cart.find(item => item.name === name);
 
     if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity = (existingItem.quantity || 1) + 1;
     } else {
-        cart.push({ name, price, img, quantity: 1 });
+        cart.push({ name, price: parseFloat(price), img, quantity: 1 });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
+}
+
+// Attach listeners for all "Add to Cart" buttons
+export function attachAddToCartListeners() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const name = btn.dataset.name;
+            const price = btn.dataset.price;
+            const img = btn.dataset.img;
+            addToCart(name, price, img);
+        });
+    });
 }
 
 // Attach listener for the "Clear Cart" button on the cart page
@@ -89,17 +104,4 @@ export function attachClearCartListener() {
             }
         });
     }
-}
-
-// Attach listeners for all "Add to Cart" buttons
-export function attachAddToCartListeners() {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    addToCartButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const name = btn.dataset.name;
-            const price = btn.dataset.price;
-            const img = btn.dataset.img;
-            addToCart(name, price, img);
-        });
-    });
 }
