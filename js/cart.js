@@ -1,12 +1,14 @@
 // cart.js
 
-// Get elements
+// Get navbar cart count (exists on all pages)
 const cartCount = document.getElementById('cart-count');
+
+// Get cart page elements (only exist on cart.html)
 const cartItemsContainer = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 const clearCartBtn = document.getElementById('clear-cart');
 
-// Load cart from localStorage or empty array
+// Load cart from localStorage or initialize as empty array
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Update cart count in navbar
@@ -16,9 +18,9 @@ function updateCartCount() {
     }
 }
 
-// Render cart items (for cart.html)
+// Render cart items on cart.html
 function renderCart() {
-    if (!cartItemsContainer || !cartTotal) return;
+    if (!cartItemsContainer || !cartTotal) return; // skip if not on cart.html
 
     cartItemsContainer.innerHTML = '';
 
@@ -47,8 +49,8 @@ function renderCart() {
 
     cartTotal.textContent = total.toFixed(2);
 
-    // Add remove button functionality
-    const removeBtns = document.querySelectorAll('.remove-btn');
+    // Add remove functionality
+    const removeBtns = cartItemsContainer.querySelectorAll('.remove-btn');
     removeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const idx = parseInt(btn.dataset.index);
@@ -60,14 +62,14 @@ function renderCart() {
     });
 }
 
-// Add item to cart (for product pages)
+// Add item to cart (used by product pages)
 function addToCart(name, price, img) {
     cart.push({ name, price, img });
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
 }
 
-// Clear entire cart
+// Clear entire cart (on cart.html)
 if (clearCartBtn) {
     clearCartBtn.addEventListener('click', () => {
         cart = [];
@@ -77,7 +79,7 @@ if (clearCartBtn) {
     });
 }
 
-// Event listeners for add-to-cart buttons
+// Attach add-to-cart buttons on product pages
 const addToCartButtons = document.querySelectorAll('.add-to-cart');
 addToCartButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -85,6 +87,7 @@ addToCartButtons.forEach(btn => {
         const price = btn.dataset.price;
         const img = btn.dataset.img;
         addToCart(name, price, img);
+        alert(`${name} added to cart!`);
     });
 });
 
