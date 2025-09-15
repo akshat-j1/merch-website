@@ -188,7 +188,7 @@
   <!-- Customize Request Form -->
   <section id="customize">
     <h2>Customize Your Product</h2>
-    <form action="https://formspree.io/f/xeolvjqa" method="POST">
+    <form>
       <input type="text" name="name" placeholder="Your Name" required><br>
       <input type="email" name="email" placeholder="Your Email" required><br>
       <textarea name="request" placeholder="Type your custom request here..." rows="5" required></textarea><br>
@@ -199,6 +199,16 @@
   <footer>
     &copy; 2025 StyleHive. All rights reserved.
   </footer>
+
+ <script type="module">
+  import { initAuthUI, initCustomizeForm } from './js/firebase-form.js';
+
+  // Initialize Google Sign-in UI
+  initAuthUI();
+
+  // Initialize Customize Form
+  initCustomizeForm(); 
+</script>
 
 </body>
 </html>
