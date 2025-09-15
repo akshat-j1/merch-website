@@ -21,7 +21,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background: #162447; /* darker evening tone */
+  background: #162447;
   color: white;
   flex-wrap: wrap;
   box-shadow: 0 2px 10px rgba(0,0,0,0.5);
@@ -30,7 +30,7 @@ nav {
 nav .logo {
   font-size: 1.8em;
   font-weight: 600;
-  color: #e43f5a; /* subtle warm accent */
+  color: #e43f5a;
 }
 
 nav .links a {
@@ -41,7 +41,7 @@ nav .links a {
 }
 
 nav .links a:hover {
-  color: #ffde59; /* highlight on hover */
+  color: #ffde59;
 }
 
 nav .search input {
@@ -92,7 +92,7 @@ nav .search button:hover {
 ========================== */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   margin: 20px;
 }
@@ -104,6 +104,9 @@ nav .search button:hover {
   box-shadow: 0 6px 15px rgba(0,0,0,0.5);
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card:hover {
@@ -111,13 +114,15 @@ nav .search button:hover {
   box-shadow: 0 10px 25px rgba(0,0,0,0.7);
 }
 
-/* All images same size */
+/* Images scale proportionally */
 .card img {
   width: 100%;
-  height: 250px; /* fixed height for consistency */
-  object-fit: cover;
+  max-height: 220px; /* max height, won't cut smaller images */
+  height: auto; 
+  object-fit: contain; /* keep full image visible */
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  margin-bottom: 10px;
+  background: #1a1a2e; /* placeholder bg for transparent images */
 }
 
 .card h2, .card h3 {
@@ -244,7 +249,7 @@ footer {
   }
 
   .card img {
-    height: 200px; /* adjust for smaller screens */
+    max-height: 180px;
   }
 
   footer {
