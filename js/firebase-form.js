@@ -1,4 +1,3 @@
-// firebase-form.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-firestore.js";
 import { getAuth, signInAnonymously, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-auth.js";
@@ -18,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-/* ---------- Sign in anonymously if no user signed in ---------- */
+/* ---------- Sign in anonymously if no user ---------- */
 onAuthStateChanged(auth, user => {
   if (!user) {
     signInAnonymously(auth)
@@ -102,7 +101,7 @@ export function initAuthUI(navSelector = 'nav .links') {
     try {
       await signOut(auth);
       showToast('Signed out');
-      // Automatically sign in anonymously after Google sign-out
+      // Revert to anonymous after Google sign-out
       signInAnonymously(auth).catch(err => console.error("Anonymous auth failed:", err));
     } catch (err) {
       console.error(err);
