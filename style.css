@@ -48,6 +48,8 @@ nav .search input {
   padding: 5px 10px;
   border-radius: 5px;
   border: none;
+  background: #2a2a3f;
+  color: #fff;
 }
 
 nav .search button {
@@ -57,6 +59,11 @@ nav .search button {
   background: #e43f5a;
   color: white;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+nav .search button:hover {
+  background: #ff6b81;
 }
 
 /* ==========================
@@ -104,10 +111,12 @@ nav .search button {
   box-shadow: 0 10px 25px rgba(0,0,0,0.7);
 }
 
+/* All images same size */
 .card img {
   width: 100%;
-  border-radius: 8px;
+  height: 250px; /* fixed height for consistency */
   object-fit: cover;
+  border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
@@ -165,6 +174,7 @@ nav .search button {
   color: white;
   border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 #customize form button:hover {
@@ -231,6 +241,10 @@ footer {
 
   .card {
     padding: 10px;
+  }
+
+  .card img {
+    height: 200px; /* adjust for smaller screens */
   }
 
   footer {
