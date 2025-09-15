@@ -1,26 +1,24 @@
 // cart.js
 
-// Get navbar cart count (exists on all pages)
-const cartCount = document.getElementById('cart-count');
-
-// Get cart page elements (only exist on cart.html)
+// Elements
+const cartCount = document.querySelectorAll('#cart-count'); // support multiple spans
 const cartItemsContainer = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 const clearCartBtn = document.getElementById('clear-cart');
 
-// Load cart from localStorage or initialize as empty array
+// Load cart from localStorage
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Update cart count in navbar
+// Update cart count in all navbars
 function updateCartCount() {
-    if (cartCount) {
-        cartCount.textContent = cart.length;
-    }
+    cartCount.forEach(span => {
+        if (span) span.textContent = cart.length;
+    });
 }
 
 // Render cart items on cart.html
 function renderCart() {
-    if (!cartItemsContainer || !cartTotal) return; // skip if not on cart.html
+    if (!cartItemsContainer || !cartTotal) return;
 
     cartItemsContainer.innerHTML = '';
 
@@ -49,8 +47,8 @@ function renderCart() {
 
     cartTotal.textContent = total.toFixed(2);
 
-    // Add remove functionality
-    const removeBtns = cartItemsContainer.querySelectorAll('.remove-btn');
+    // Remove item functionality
+    const removeBtns = document.querySelectorAll('.remove-btn');
     removeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const idx = parseInt(btn.dataset.index);
@@ -62,14 +60,14 @@ function renderCart() {
     });
 }
 
-// Add item to cart (used by product pages)
+// Add item to cart (works on product pages)
 function addToCart(name, price, img) {
     cart.push({ name, price, img });
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
 }
 
-// Clear entire cart (on cart.html)
+// Clear cart
 if (clearCartBtn) {
     clearCartBtn.addEventListener('click', () => {
         cart = [];
@@ -79,15 +77,18 @@ if (clearCartBtn) {
     });
 }
 
-// Attach add-to-cart buttons on product pages
+// Add event listeners to all Add-to-Cart buttons
 const addToCartButtons = document.querySelectorAll('.add-to-cart');
 addToCartButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const name = btn.dataset.name;
         const price = btn.dataset.price;
         const img = btn.dataset.img;
-        addToCart(name, price, img);
-        alert(`${name} added to cart!`);
+        if (name && price && img) {
+            addToCart(name, price, img);
+        } else {
+            console.warn('Missing product data for Add to Cart button');
+        }
     });
 });
 
