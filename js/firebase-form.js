@@ -1,8 +1,8 @@
-// firebase-form.js
+// js/firebase-form.js
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-firestore.js";
-import { getAuth, signInAnonymously, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.7.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 /* ---------- Firebase config ---------- */
 const firebaseConfig = {
@@ -33,13 +33,14 @@ export function showToast(msg, isError = false) {
   t.style.background = isError ? '#ffdddd' : '#e6ffed';
   t.style.color = isError ? '#b00000' : '#056624';
   document.body.appendChild(t);
-  setTimeout(()=> t.remove(), 3500);
+  setTimeout(() => t.remove(), 3500);
 }
 
 /* ---------- Auth UI ---------- */
 export function initAuthUI(navSelector = 'nav .links') {
   const navLinks = document.querySelector(navSelector) || document.querySelector('.links');
   if (!navLinks) return;
+  if (document.getElementById('auth-wrap')) return;
 
   const authWrap = document.createElement('span');
   authWrap.id = 'auth-wrap';
@@ -73,9 +74,9 @@ export function initAuthUI(navSelector = 'nav .links') {
   userLabel.style.display = 'none';
   userLabel.style.marginLeft = '6px';
 
+  authWrap.appendChild(userLabel);
   authWrap.appendChild(loginBtn);
   authWrap.appendChild(logoutBtn);
-  authWrap.appendChild(userLabel);
 
   navLinks.appendChild(authWrap);
 
@@ -94,8 +95,6 @@ export function initAuthUI(navSelector = 'nav .links') {
     try {
       await signOut(auth);
       showToast('Signed out');
-      // Revert to anonymous after Google sign-out
-      signInAnonymously(auth).catch(err => console.error("Anonymous auth failed:", err));
     } catch (err) {
       console.error(err);
       showToast('Sign-out failed', true);
@@ -104,10 +103,10 @@ export function initAuthUI(navSelector = 'nav .links') {
 
   onAuthStateChanged(auth, user => {
     if (user) {
-      loginBtn.style.display = user.isAnonymous ? 'inline-block' : 'none';
+      loginBtn.style.display = 'none';
       logoutBtn.style.display = 'inline-block';
       userLabel.style.display = 'inline-block';
-      userLabel.textContent = user.isAnonymous ? 'Guest' : (user.email || user.displayName);
+      userLabel.textContent = user.displayName || user.email;
     } else {
       loginBtn.style.display = 'inline-block';
       logoutBtn.style.display = 'none';
@@ -135,7 +134,7 @@ export function initCustomizeForm(formSelector = '#customize-form') {
       return;
     }
 
-    const submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('input[type="submit"]');
+    const submitBtn = form.querySelector('button[type="submit"]');
     if (submitBtn) submitBtn.disabled = true;
 
     try {
