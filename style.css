@@ -175,11 +175,26 @@ nav .links a:hover {
    PRODUCT GRID
 ========================== */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
   gap: 32px;
   margin-top: 40px;
+  padding: 10px;
+  flex-wrap: nowrap;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.grid {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 
 .card {
   background: white;
@@ -192,6 +207,7 @@ nav .links a:hover {
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid #E5E7EB;
+  min-width: 280px; /* Ensure cards have a minimum width */
 }
 
 .card:hover {
@@ -487,6 +503,9 @@ footer {
   }
   .grid {
     gap: 24px;
+    /* On mobile, allow the grid to wrap to multiple lines again */
+    flex-wrap: wrap; 
+    overflow-x: auto;
   }
   .card {
     padding: 20px;
