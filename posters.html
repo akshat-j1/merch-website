@@ -1,78 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Posters - Mercancía</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script type="module" defer src="js/main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posters - Mercancía</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" defer src="js/main.js"></script>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Mercancía</div>
-  <button id="menu-toggle" aria-label="Toggle navigation menu">
-    <div class="hamburger"></div>
-  </button>
-  <div id="mobile-menu">
-    <div class="links">
-      <a href="index.html">Home</a>
-      <a href="posters.html">Posters</a>
-      <a href="stickers.html">Stickers</a>
-      <a href="hoodies.html">Hoodies</a>
-      <a href="couple-shirts.html">Couple Shirts</a>
-      <a href="anime-figures.html">Anime Figures</a>
-      <a href="index.html#customize">Customize</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="cart.html" class="cart-link">🛒 Cart <span id="cart-count">0</span></a>
-    </div>
-  </div>
+    <div class="logo">Mercancía</div>
+    <button id="menu-toggle" aria-label="Toggle navigation menu">
+        <div class="hamburger"></div>
+    </button>
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="posters.html">Posters</a>
+        <a href="stickers.html">Stickers</a>
+        <a href="hoodies.html">Hoodies</a>
+        <a href="couple-shirts.html">Couple Shirts</a>
+        <a href="anime-figures.html">Anime Figures</a>
+        <a href="index.html#customize">Customize</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="cart-link-desktop">
+        <a href="#" id="cart-btn">🛒 Cart <span id="cart-count">0</span></a>
+    </div>
 </nav>
 
-<section class="hero">
-  <h1>Posters Collection</h1>
-  <p>Decorate your space with our trendy posters</p>
-</section>
+<main>
+    <section class="hero">
+        <h1>Posters Collection</h1>
+        <p>Decorate your space with our trendy posters</p>
+    </section>
 
-<section id="posters" class="fade-in-section">
-  <div class="grid">
-    <div class="card">
-      <img src="images/poster1.jpeg" alt="Poster 1">
-      <h3>Poster 1</h3>
-      <p>₹499</p>
-      <button class="btn add-to-cart" data-name="Poster 1" data-price="499" data-img="images/poster1.jpeg">Add to Cart</button>
-    </div>
-    <div class="card">
-      <img src="images/poster2.jpeg" alt="Poster 2">
-      <h3>Poster 2</h3>
-      <p>₹499</p>
-      <button class="btn add-to-cart" data-name="Poster 2" data-price="499" data-img="images/poster2.jpeg">Add to Cart</button>
-    </div>
-    <div class="card">
-      <img src="images/poster3.jpeg" alt="Poster 3">
-      <h3>Poster 3</h3>
-      <p>₹499</p>
-      <button class="btn add-to-cart" data-name="Poster 3" data-price="499" data-img="images/poster3.jpeg">Add to Cart</button>
-    </div>
-    <div class="card">
-      <img src="images/poster4.jpeg" alt="Poster 4">
-      <h3>Poster 4</h3>
-      <p>₹499</p>
-      <button class="btn add-to-cart" data-name="Poster 4" data-price="499" data-img="images/poster4.jpeg">Add to Cart</button>
-    </div>
-    <div class="card">
-      <img src="images/poster5.jpeg" alt="Poster 5">
-      <h3>Poster 5</h3>
-      <p>₹499</p>
-      <button class="btn add-to-cart" data-name="Poster 5" data-price="499" data-img="images/poster5.jpeg">Add to Cart</button>
-    </div>
-  </div>
-</section>
+    <section id="posters-collection" class="fade-in-section">
+        <div class="grid">
+            <div class="card">
+                <img src="images/poster1.jpeg" alt="A detailed art poster of a comic book character">
+                <h3>Poster 1</h3>
+                <p>₹499</p>
+                <button class="btn add-to-cart" data-name="Poster 1" data-price="499" data-img="images/poster1.jpeg">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="images/poster2.jpeg" alt="A vibrant, colorful landscape poster with geometric shapes">
+                <h3>Poster 2</h3>
+                <p>₹499</p>
+                <button class="btn add-to-cart" data-name="Poster 2" data-price="499" data-img="images/poster2.jpeg">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="images/poster3.jpeg" alt="A vintage movie poster with a classic film title">
+                <h3>Poster 3</h3>
+                <p>₹499</p>
+                <button class="btn add-to-cart" data-name="Poster 3" data-price="499" data-img="images/poster3.jpeg">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="images/poster4.jpeg" alt="An abstract modern art poster for home decor">
+                <h3>Poster 4</h3>
+                <p>₹499</p>
+                <button class="btn add-to-cart" data-name="Poster 4" data-price="499" data-img="images/poster4.jpeg">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="images/poster5.jpeg" alt="A motivational quote poster with elegant typography">
+                <h3>Poster 5</h3>
+                <p>₹499</p>
+                <button class="btn add-to-cart" data-name="Poster 5" data-price="499" data-img="images/poster5.jpeg">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+</main>
 
 <footer>
-  &copy; 2025 Mercancía. All rights reserved.
+    &copy; 2025 Mercancía. All rights reserved.
 </footer>
+
+<!-- Cart Sidebar -->
+<div id="cart-sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <h2>Your Cart</h2>
+        <button id="close-cart-btn" class="close-btn">&times;</button>
+    </div>
+    <div id="cart-items" class="sidebar-content">
+        <!-- Cart items will be rendered here -->
+    </div>
+    <div class="sidebar-footer">
+        <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+        <div id="checkout-section">
+            <button id="checkout-btn" class="btn checkout-btn">Proceed to Checkout</button>
+        </div>
+        <button id="clear-cart-btn" class="btn clear-cart-btn">Clear Cart</button>
+    </div>
+</div>
+<div id="cart-overlay" class="overlay"></div>
 
 </body>
 </html>
