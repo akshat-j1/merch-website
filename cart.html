@@ -1,41 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Cart - Mercancía</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script type="module" defer src="js/main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Mercancía</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" defer src="js/main.js"></script>
 </head>
 <body>
 
-  <nav>
-    <div class="logo">Mercancía</div>
-    <div class="links">
-      <a href="index.html">Home</a>
-      <a href="posters.html">Posters</a>
-      <a href="stickers.html">Stickers</a>
-      <a href="hoodies.html">Hoodies</a>
-      <a href="couple-shirts.html">Couple Shirts</a>
-      <a href="anime-figures.html">Anime Figures</a>
-      <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
-    </div>
-  </nav>
+    <nav>
+        <div class="logo">Mercancía</div>
+        <button id="menu-toggle" aria-label="Toggle navigation menu">
+            <div class="hamburger"></div>
+        </button>
+        <div id="mobile-menu">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="posters.html">Posters</a>
+                <a href="stickers.html">Stickers</a>
+                <a href="hoodies.html">Hoodies</a>
+                <a href="couple-shirts.html">Couple Shirts</a>
+                <a href="anime-figures.html">Anime Figures</a>
+                <a href="index.html#customize">Customize</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="cart.html" class="cart-link">🛒 Cart <span id="cart-count">0</span></a>
+            </div>
+        </div>
+    </nav>
 
-  <section class="hero">
-    <h1>Your Shopping Cart</h1>
-  </section>
+    <section class="hero">
+        <h1>Your Shopping Cart</h1>
+    </section>
 
-  <section id="cart" class="fade-in-section">
-    <div id="cart-items"></div>
-    <h3>Total: ₹<span id="cart-total">0.00</span></h3>
-    <button id="clear-cart">Clear Cart</button>
-  </section>
+    <section id="cart" class="fade-in-section">
+        <div id="cart-items"></div>
+        <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+        <div class="cart-buttons">
+            <button id="clear-cart" class="btn">Clear Cart</button>
+            <a href="checkout.html" id="checkout-btn" class="btn">Proceed to Checkout</a>
+        </div>
+    </section>
 
-  <footer>
-    &copy; 2025 StyleHive. All rights reserved.
-  </footer>
+    <footer>
+        &copy; 2025 Mercancía. All rights reserved.
+    </footer>
 
 </body>
 </html>
