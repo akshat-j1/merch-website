@@ -106,7 +106,6 @@ nav .links a:hover {
 /* ==========================
    SIDEBAR MENU
 ========================== */
-/* Hide the toggle button and mobile menu by default */
 #menu-toggle {
   display: none;
   background: none;
@@ -139,9 +138,136 @@ nav .links a:hover {
   top: 8px;
 }
 
-/* Hide the mobile menu container on desktop */
-#mobile-menu {
+/* The sidebar itself */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.is-open {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+}
+
+.sidebar-header .close-btn {
+  font-size: 2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #212529;
+}
+
+.sidebar-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.sidebar-footer h3 {
+  margin: 0 0 16px;
+  color: #FF6B6B;
+}
+
+.empty-cart-message {
+  text-align: center;
+  color: #4B5563;
+}
+
+/* The dark overlay behind the sidebar */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
   display: none;
+}
+
+.overlay.is-visible {
+  display: block;
+}
+
+/* Styles for cart items within the sidebar */
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.cart-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+
+.cart-item .details {
+  flex: 1;
+}
+
+.cart-item .details h4, .cart-item .details p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.cart-item .remove-btn {
+  background: none;
+  border: none;
+  color: #EF4444;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#checkout-section {
+  margin-top: 20px;
+}
+#checkout-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #D1D5DB;
+  border-radius: 5px;
+}
+
+#checkout-form .checkout-btn {
+  width: 100%;
+  background-color: #FF6B6B;
+}
+
+.clear-cart-btn {
+  width: 100%;
+  margin-top: 10px;
+  background-color: #495057;
 }
 
 /* ==========================
@@ -212,7 +338,7 @@ nav .links a:hover {
 
 .card:hover {
   transform: translateY(-8px) rotate(-1deg);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .card img {
@@ -266,197 +392,6 @@ nav .links a:hover {
 .show-more-container {
   text-align: center;
   margin-top: 48px;
-}
-
-/* ==========================
-   CART PAGE STYLES
-========================== */
-#cart {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-#cart-items {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin: 24px 0;
-}
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  background: white;
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease-in-out;
-  border: 1px solid #E5E7EB;
-}
-
-.cart-item:hover {
-  transform: translateY(-4px);
-}
-
-.cart-item img {
-  margin-right: 20px;
-  border-radius: 8px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.cart-item:hover img {
-  transform: scale(1.05);
-}
-
-.cart-item .details {
-  flex: 1;
-}
-
-.cart-item .details h4 {
-  font-size: 1.3em;
-  margin: 0 0 6px 0;
-}
-
-.cart-item .details p {
-  margin: 0 0 10px 0;
-  color: #4B5563;
-}
-
-.cart-item .remove-btn {
-  background-color: #EF4444;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-}
-
-.cart-item .remove-btn:hover {
-  background-color: #DC2626;
-}
-
-.cart-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.cart-buttons .btn {
-  width: 100%;
-}
-
-#clear-cart {
-  background-color: #212529;
-  color: white;
-  border: none;
-  padding: 14px 24px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-#clear-cart:hover {
-  background-color: #495057;
-  transform: translateY(-2px);
-}
-
-#cart-total {
-  font-size: 1.8em;
-  font-weight: 800;
-  color: #FF6B6B;
-  margin-top: 24px;
-}
-
-/* ==========================
-   CHECKOUT PAGE STYLES
-========================== */
-.checkout-container {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.checkout-summary {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.checkout-summary h2 {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.summary-item {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.1em;
-  padding: 10px 0;
-  border-bottom: 1px solid #E5E7EB;
-}
-
-.summary-total {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.4em;
-  font-weight: 600;
-  margin-top: 20px;
-}
-
-.summary-total h3 {
-  margin: 0;
-}
-
-#checkout-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-#checkout-form h2 {
-  text-align: center;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.form-group input {
-  padding: 12px;
-  border: 1px solid #D1D5DB;
-  border-radius: 8px;
-  font-size: 1em;
-}
-
-.checkout-btn {
-  background-color: #FF6B6B;
-  color: white;
-  border: none;
-  padding: 14px 24px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.checkout-btn:hover {
-  background-color: #FF4D4D;
-  transform: translateY(-2px);
 }
 
 /* ==========================
@@ -551,44 +486,48 @@ footer {
    RESPONSIVE STYLES
 ========================== */
 @media (max-width: 768px) {
-  /* On small screens, hide the desktop links container and show the hamburger toggle */
   nav .links {
     display: none;
   }
-  
-  #menu-toggle {
-    display: block;
-  }
-  
-  /* Show the mobile menu container as a sidebar */
+  nav #auth-wrap {
+    display: none;
+  }
+  nav {
+    justify-content: space-between;
+  }
+  .cart-link {
+    display: none;
+  }
+  #menu-toggle {
+    display: block;
+    margin-right: 16px;
+  }
   #mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100vh;
-    background: #212529;
-    padding: 80px 20px 20px;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
-    display: block; /* Ensure the mobile menu container is a block element */
-  }
-  
-  /* Class to show the menu */
-  #mobile-menu.is-active {
-    transform: translateX(0);
-  }
-  
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #212529;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1002;
+    padding: 20px;
+  }
+
+  #mobile-menu.is-open {
+    transform: translateX(0);
+  }
+  
   #mobile-menu .links {
-    display: flex; /* Display the links inside the mobile menu */
+    display: flex;
     flex-direction: column;
     width: 100%;
     align-items: flex-start;
     gap: 16px;
   }
-  
-  /* Rest of responsive styles... */
+
   .hero {
     padding: 80px 16px;
   }
@@ -602,22 +541,17 @@ footer {
     padding: 40px 16px;
   }
   .grid {
+    display: flex;
+    flex-direction: column;
     gap: 24px;
-    /* On mobile, allow the grid to wrap to multiple lines again */
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     overflow-x: auto;
   }
   .card {
     padding: 20px;
   }
-
-  /* Checkout page responsive styles */
-  .checkout-container {
-      flex-direction: column;
-  }
 }
 
-/* This rule ensures the desktop menu is always visible on larger screens */
 @media (min-width: 769px) {
   nav .links {
     display: flex;
@@ -629,9 +563,5 @@ footer {
 
   #menu-toggle {
     display: none;
-  }
-  
-  .checkout-container {
-      flex-direction: row;
   }
 }
