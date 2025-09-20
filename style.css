@@ -336,8 +336,18 @@ nav .links a:hover {
   background-color: #DC2626;
 }
 
-#clear-cart {
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
   margin-top: 24px;
+}
+
+.cart-buttons .btn {
+  width: 100%;
+}
+
+#clear-cart {
   background-color: #212529;
   color: white;
   border: none;
@@ -357,6 +367,96 @@ nav .links a:hover {
   font-weight: 800;
   color: #FF6B6B;
   margin-top: 24px;
+}
+
+/* ==========================
+   CHECKOUT PAGE STYLES
+========================== */
+.checkout-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.checkout-summary {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-summary h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1em;
+  padding: 10px 0;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.summary-total h3 {
+  margin: 0;
+}
+
+#checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+#checkout-form h2 {
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.checkout-btn {
+  background-color: #FF6B6B;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.checkout-btn:hover {
+  background-color: #FF4D4D;
+  transform: translateY(-2px);
 }
 
 /* ==========================
@@ -510,6 +610,11 @@ footer {
   .card {
     padding: 20px;
   }
+
+  /* Checkout page responsive styles */
+  .checkout-container {
+      flex-direction: column;
+  }
 }
 
 /* This rule ensures the desktop menu is always visible on larger screens */
@@ -524,5 +629,9 @@ footer {
 
   #menu-toggle {
     display: none;
+  }
+  
+  .checkout-container {
+      flex-direction: row;
   }
 }
