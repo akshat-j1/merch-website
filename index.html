@@ -15,20 +15,45 @@
     <button id="menu-toggle" aria-label="Toggle navigation menu">
       <div class="hamburger"></div>
     </button>
-    <div id="mobile-menu">
-      <div class="links">
-        <a href="index.html">Home</a>
-        <a href="posters.html">Posters</a>
-        <a href="stickers.html">Stickers</a>
-        <a href="hoodies.html">Hoodies</a>
-        <a href="couple-shirts.html">Couple Shirts</a>
-        <a href="anime-figures.html">Anime Figures</a>
-        <a href="#customize">Customize</a>
-        <a href="#contact">Contact</a>
-        <a href="cart.html" class="cart-link">🛒 Cart <span id="cart-count">0</span></a>
-      </div>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="#posters">Posters</a>
+      <a href="#stickers">Stickers</a>
+      <a href="#hoodies">Hoodies</a>
+      <a href="#couple-shirts">Couple Shirts</a>
+      <a href="#anime-figures">Anime Figures</a>
+      <a href="#customize">Customize</a>
+      <a href="#contact">Contact</a>
+      <a href="#" id="cart-btn" class="cart-link">🛒 Cart <span id="cart-count">0</span></a>
     </div>
   </nav>
+
+  <!-- Cart Sidebar -->
+  <div id="cart-sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <h2>Your Cart</h2>
+      <button id="close-cart-btn" class="close-btn">&times;</button>
+    </div>
+    <div id="cart-items" class="sidebar-content">
+      <!-- Cart items will be rendered here -->
+    </div>
+    <div class="sidebar-footer">
+      <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+      <div id="checkout-section">
+        <form id="checkout-form">
+          <h4>Shipping Information</h4>
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="address" placeholder="Address" required>
+          <input type="text" name="city" placeholder="City" required>
+          <input type="text" name="zipCode" placeholder="Zip Code" required>
+          <button type="submit" class="btn checkout-btn">Place Order</button>
+        </form>
+      </div>
+      <button id="clear-cart-btn" class="btn clear-cart-btn">Clear Cart</button>
+    </div>
+  </div>
+  <div id="cart-overlay" class="overlay"></div>
 
   <section class="hero" id="home">
     <h1>Welcome to Mercancía</h1>
@@ -44,23 +69,32 @@
           <h3>Poster 1</h3>
           <p>₹499</p>
           <button class="btn add-to-cart" data-name="Poster 1" data-price="499" data-img="images/poster1.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/poster2.jpeg" alt="Poster 2">
-          <h3>Poster 2</h3>
-          <p>₹499</p>
-          <button class="btn add-to-cart" data-name="Poster 2" data-price="499" data-img="images/poster2.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/poster3.jpeg" alt="Poster 3">
-          <h3>Poster 3</h3>
-          <p>₹499</p>
-          <button class="btn add-to-cart" data-name="Poster 3" data-price="499" data-img="images/poster3.jpeg">Add to Cart</button>
-        </div>
-      </div>
-      <div class="show-more-container">
-        <a href="posters.html" class="btn">Show More Posters</a>
-      </div>
+    </div>
+    <div class="card">
+      <img src="images/poster2.jpeg" alt="Poster 2">
+      <h3>Poster 2</h3>
+      <p>₹499</p>
+      <button class="btn add-to-cart" data-name="Poster 2" data-price="499" data-img="images/poster2.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/poster3.jpeg" alt="Poster 3">
+      <h3>Poster 3</h3>
+      <p>₹499</p>
+      <button class="btn add-to-cart" data-name="Poster 3" data-price="499" data-img="images/poster3.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/poster4.jpeg" alt="Poster 4">
+      <h3>Poster 4</h3>
+      <p>₹499</p>
+      <button class="btn add-to-cart" data-name="Poster 4" data-price="499" data-img="images/poster4.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/poster5.jpeg" alt="Poster 5">
+      <h3>Poster 5</h3>
+      <p>₹499</p>
+      <button class="btn add-to-cart" data-name="Poster 5" data-price="499" data-img="images/poster5.jpeg">Add to Cart</button>
+    </div>
+  </div>
     </section>
 
     <section id="stickers">
@@ -71,23 +105,32 @@
           <h3>Sticker 1</h3>
           <p>₹199</p>
           <button class="btn add-to-cart" data-name="Sticker 1" data-price="199" data-img="images/sticker1.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/sticker2.jpeg" alt="Sticker 2">
-          <h3>Sticker 2</h3>
-          <p>₹199</p>
-          <button class="btn add-to-cart" data-name="Sticker 2" data-price="199" data-img="images/sticker2.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/sticker3.jpeg" alt="Sticker 3">
-          <h3>Sticker 3</h3>
-          <p>₹199</p>
-          <button class="btn add-to-cart" data-name="Sticker 3" data-price="199" data-img="images/sticker3.jpeg">Add to Cart</button>
-        </div>
-      </div>
-      <div class="show-more-container">
-        <a href="stickers.html" class="btn">Show More Stickers</a>
-      </div>
+    </div>
+    <div class="card">
+      <img src="images/sticker2.jpeg" alt="Sticker 2">
+      <h3>Sticker 2</h3>
+      <p>₹199</p>
+      <button class="btn add-to-cart" data-name="Sticker 2" data-price="199" data-img="images/sticker2.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/sticker3.jpeg" alt="Sticker 3">
+      <h3>Sticker 3</h3>
+      <p>₹199</p>
+      <button class="btn add-to-cart" data-name="Sticker 3" data-price="199" data-img="images/sticker3.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/sticker4.jpeg" alt="Sticker 4">
+      <h3>Sticker 4</h3>
+      <p>₹199</p>
+      <button class="btn add-to-cart" data-name="Sticker 4" data-price="199" data-img="images/sticker4.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/sticker5.jpeg" alt="Sticker 5">
+      <h3>Sticker 5</h3>
+      <p>₹199</p>
+      <button class="btn add-to-cart" data-name="Sticker 5" data-price="199" data-img="images/sticker5.jpeg">Add to Cart</button>
+    </div>
+  </div>
     </section>
 
     <section id="hoodies">
@@ -98,23 +141,32 @@
           <h3>Hoodie 1</h3>
           <p>₹1499</p>
           <button class="btn add-to-cart" data-name="Hoodie 1" data-price="1499" data-img="images/hoodie1.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/hoodie2.jpeg" alt="Hoodie 2">
-          <h3>Hoodie 2</h3>
-          <p>₹1499</p>
-          <button class="btn add-to-cart" data-name="Hoodie 2" data-price="1499" data-img="images/hoodie2.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/hoodie3.jpeg" alt="Hoodie 3">
-          <h3>Hoodie 3</h3>
-          <p>₹1499</p>
-          <button class="btn add-to-cart" data-name="Hoodie 3" data-price="1499" data-img="images/hoodie3.jpeg">Add to Cart</button>
-        </div>
-      </div>
-      <div class="show-more-container">
-        <a href="hoodies.html" class="btn">Show More Hoodies</a>
-      </div>
+    </div>
+    <div class="card">
+      <img src="images/hoodie2.jpeg" alt="Hoodie 2">
+      <h3>Hoodie 2</h3>
+      <p>₹1499</p>
+      <button class="btn add-to-cart" data-name="Hoodie 2" data-price="1499" data-img="images/hoodie2.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/hoodie3.jpeg" alt="Hoodie 3">
+      <h3>Hoodie 3</h3>
+      <p>₹1499</p>
+      <button class="btn add-to-cart" data-name="Hoodie 3" data-price="1499" data-img="images/hoodie3.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/hoodie4.jpeg" alt="Hoodie 4">
+      <h3>Hoodie 4</h3>
+      <p>₹1499</p>
+      <button class="btn add-to-cart" data-name="Hoodie 4" data-price="1499" data-img="images/hoodie4.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/hoodie5.jpeg" alt="Hoodie 5">
+      <h3>Hoodie 5</h3>
+      <p>₹1499</p>
+      <button class="btn add-to-cart" data-name="Hoodie 5" data-price="1499" data-img="images/hoodie5.jpeg">Add to Cart</button>
+    </div>
+  </div>
     </section>
 
     <section id="couple-shirts">
@@ -125,23 +177,32 @@
           <h3>Couple Shirt 1</h3>
           <p>₹999</p>
           <button class="btn add-to-cart" data-name="Couple Shirt 1" data-price="999" data-img="images/coupleshirt1.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/coupleshirt2.jpeg" alt="Couple Shirt 2">
-          <h3>Couple Shirt 2</h3>
-          <p>₹999</p>
-          <button class="btn add-to-cart" data-name="Couple Shirt 2" data-price="999" data-img="images/coupleshirt2.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/coupleshirt3.jpeg" alt="Couple Shirt 3">
-          <h3>Couple Shirt 3</h3>
-          <p>₹999</p>
-          <button class="btn add-to-cart" data-name="Couple Shirt 3" data-price="999" data-img="images/coupleshirt3.jpeg">Add to Cart</button>
-        </div>
-      </div>
-      <div class="show-more-container">
-        <a href="couple-shirts.html" class="btn">Show More Couple Shirts</a>
-      </div>
+    </div>
+    <div class="card">
+      <img src="images/coupleshirt2.jpeg" alt="Couple Shirt 2">
+      <h3>Couple Shirt 2</h3>
+      <p>₹999</p>
+      <button class="btn add-to-cart" data-name="Couple Shirt 2" data-price="999" data-img="images/coupleshirt2.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/coupleshirt3.jpeg" alt="Couple Shirt 3">
+      <h3>Couple Shirt 3</h3>
+      <p>₹999</p>
+      <button class="btn add-to-cart" data-name="Couple Shirt 3" data-price="999" data-img="images/coupleshirt3.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/coupleshirt4.jpeg" alt="Couple Shirt 4">
+      <h3>Couple Shirt 4</h3>
+      <p>₹999</p>
+      <button class="btn add-to-cart" data-name="Couple Shirt 4" data-price="999" data-img="images/coupleshirt4.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/coupleshirt5.jpeg" alt="Couple Shirt 5">
+      <h3>Couple Shirt 5</h3>
+      <p>₹999</p>
+      <button class="btn add-to-cart" data-name="Couple Shirt 5" data-price="999" data-img="images/coupleshirt5.jpeg">Add to Cart</button>
+    </div>
+  </div>
     </section>
 
     <section id="anime-figures">
@@ -152,44 +213,53 @@
           <h3>Anime Figure 1</h3>
           <p>₹1499</p>
           <button class="btn add-to-cart" data-name="Anime Figure 1" data-price="1499" data-img="images/animefigure1.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/animefigure2.jpeg" alt="Anime Figure 2">
-          <h3>Anime Figure 2</h3>
-          <p>₹1499</p>
-          <button class="btn add-to-cart" data-name="Anime Figure 2" data-price="1499" data-img="images/animefigure2.jpeg">Add to Cart</button>
-        </div>
-        <div class="card">
-          <img src="images/animefigure3.jpeg" alt="Anime Figure 3">
-          <h3>Anime Figure 3</h3>
-          <p>₹1499</p>
-          <button class="btn add-to-cart" data-name="Anime Figure 3" data-price="1499" data-img="images/animefigure3.jpeg">Add to Cart</button>
-        </div>
-      </div>
-      <div class="show-more-container">
-        <a href="anime-figures.html" class="btn">Show More Anime Figures</a>
-      </div>
+    </div>
+    <div class="card">
+      <img src="images/animefigure2.jpeg" alt="Anime Figure 2">
+      <h3>Anime Figure 2</h3>
+      <p>₹1499</p>
+      <button class="btn add-to-cart" data-name="Anime Figure 2" data-price="1499" data-img="images/animefigure2.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/animefigure3.jpeg" alt="Anime Figure 3">
+      <h3>Anime Figure 3</h3>
+      <p>₹1499</p>
+      <button class="btn add-to-cart" data-name="Anime Figure 3" data-price="1499" data-img="images/animefigure3.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/animefigure4.jpeg" alt="Anime Figure 4">
+      <h3>Anime Figure 4</h3>
+      <p>₹1499</p>
+      <button class="btn add-to-cart" data-name="Anime Figure 4" data-price="1499" data-img="images/animefigure4.jpeg">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/animefigure5.jpeg" alt="Anime Figure 5">
+      <h3>Anime Figure 5</h3>
+      <p>₹1499</p>
+      <button class="btn add-to-cart" data-name="Anime Figure 5" data-price="1499" data-img="images/animefigure5.jpeg">Add to Cart</button>
+    </div>
+  </div>
+    </section>
+
+    <section id="customize" class="fade-in-section">
+      <h2>Customize Your Product</h2>
+      <form id="customize-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="request" placeholder="Type your custom request here..." rows="5" required></textarea>
+        <button type="submit" class="btn">Send Request</button>
+      </form>
+    </section>
+
+    <section id="contact" class="fade-in-section">
+      <h2>Contact Us</h2>
+      <p>Phone 1: <a href="tel:+919997175745">+91 99971 75745</a></p>
+      <p>Phone 2: <a href="tel:+919082274205">+91 90822 74205</a></p>
+      <p>Phone 3: <a href="tel:+919821434183">+91 98214 34183</a></p>
+      <p>Email: <a href="mailto:info@mercancia.com">info@mercancia.com</a></p>
+      <p>Instagram: <a href="https://instagram.com/mercancia" target="_blank">@mercancia</a></p>
     </section>
   </div>
-
-  <section id="customize" class="fade-in-section">
-    <h2>Customize Your Product</h2>
-    <form id="customize-form">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="request" placeholder="Type your custom request here..." rows="5" required></textarea>
-      <button type="submit" class="btn">Send Request</button>
-    </form>
-  </section>
-
-  <section id="contact" class="fade-in-section">
-    <h2>Contact Us</h2>
-    <p>Phone 1: <a href="tel:+919997175745">+91 99971 75745</a></p>
-    <p>Phone 2: <a href="tel:+919082274205">+91 90822 74205</a></p>
-    <p>Phone 3: <a href="tel:+919821434183">+91 98214 34183</a></p>
-    <p>Email: <a href="mailto:info@mercancia.com">info@mercancia.com</a></p>
-    <p>Instagram: <a href="https://instagram.com/mercancia" target="_blank">@mercancia</a></p>
-  </section>
 
   <footer>
     &copy; 2025 Mercancía. All rights reserved.
