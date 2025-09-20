@@ -10,26 +10,27 @@
 </head>
 <body>
 
-    <nav>
-        <div class="logo">Mercancía</div>
-        <button id="menu-toggle" aria-label="Toggle navigation menu">
-            <div class="hamburger"></div>
-        </button>
-        <div id="mobile-menu">
-            <div class="links">
-                <a href="index.html">Home</a>
-                <a href="posters.html">Posters</a>
-                <a href="stickers.html">Stickers</a>
-                <a href="hoodies.html">Hoodies</a>
-                <a href="couple-shirts.html">Couple Shirts</a>
-                <a href="anime-figures.html">Anime Figures</a>
-                <a href="index.html#customize">Customize</a>
-                <a href="index.html#contact">Contact</a>
-                <a href="cart.html" class="cart-link">🛒 Cart <span id="cart-count">0</span></a>
-            </div>
-        </div>
-    </nav>
+<nav>
+    <div class="logo">Mercancía</div>
+    <button id="menu-toggle" aria-label="Toggle navigation menu">
+        <div class="hamburger"></div>
+    </button>
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="posters.html">Posters</a>
+        <a href="stickers.html">Stickers</a>
+        <a href="hoodies.html">Hoodies</a>
+        <a href="couple-shirts.html">Couple Shirts</a>
+        <a href="anime-figures.html">Anime Figures</a>
+        <a href="index.html#customize">Customize</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="cart-link-desktop">
+        <a href="#" id="cart-btn">🛒 Cart <span id="cart-count">0</span></a>
+    </div>
+</nav>
 
+<main>
     <section class="hero">
         <h1>Your Shopping Cart</h1>
     </section>
@@ -38,14 +39,34 @@
         <div id="cart-items"></div>
         <h3>Total: ₹<span id="cart-total">0.00</span></h3>
         <div class="cart-buttons">
-            <button id="clear-cart" class="btn">Clear Cart</button>
-            <a href="checkout.html" id="checkout-btn" class="btn">Proceed to Checkout</a>
+            <button id="clear-cart-btn" class="btn">Clear Cart</button>
+            <button id="checkout-btn" class="btn">Proceed to Checkout</button>
         </div>
     </section>
+</main>
 
-    <footer>
-        &copy; 2025 Mercancía. All rights reserved.
-    </footer>
+<footer>
+    &copy; 2025 Mercancía. All rights reserved.
+</footer>
+
+<!-- Cart Sidebar -->
+<div id="cart-sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <h2>Your Cart</h2>
+        <button id="close-cart-btn" class="close-btn">&times;</button>
+    </div>
+    <div id="cart-items" class="sidebar-content">
+        <!-- Cart items will be rendered here -->
+    </div>
+    <div class="sidebar-footer">
+        <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+        <div id="checkout-section">
+            <button id="checkout-btn" class="btn checkout-btn">Proceed to Checkout</button>
+        </div>
+        <button id="clear-cart-btn" class="btn clear-cart-btn">Clear Cart</button>
+    </div>
+</div>
+<div id="cart-overlay" class="overlay"></div>
 
 </body>
 </html>
