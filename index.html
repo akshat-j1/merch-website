@@ -240,5 +240,32 @@
     &copy; 2025 Mercancía. All rights reserved.
   </footer>
 
+  <!-- Cart Sidebar -->
+  <div id="cart-sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <h2>Your Cart</h2>
+      <button id="close-cart-btn" class="close-btn">&times;</button>
+    </div>
+    <div id="cart-items" class="sidebar-content">
+      <!-- Cart items will be rendered here -->
+    </div>
+    <div class="sidebar-footer">
+      <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+      <div id="checkout-section">
+        <form id="checkout-form">
+          <h4>Shipping Information</h4>
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="address" placeholder="Address" required>
+          <input type="text" name="city" placeholder="City" required>
+          <input type="text" name="zipCode" placeholder="Zip Code" required>
+          <button type="submit" class="btn checkout-btn">Place Order</button>
+        </form>
+      </div>
+      <button id="clear-cart-btn" class="btn clear-cart-btn">Clear Cart</button>
+    </div>
+  </div>
+  <div id="cart-overlay" class="overlay"></div>
+
 </body>
 </html>
