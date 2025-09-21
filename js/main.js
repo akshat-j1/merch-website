@@ -15,26 +15,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- CART STATE ---
     let cart = JSON.parse(localStorage.getItem("mercanciaCart")) || [];
 
-    // --- ELEMENT ARRAYS FOR SIDEBAR + MAIN CART ---
+    // --- ELEMENT ARRAYS FOR SIDEBAR, MAIN CART, AND CHECKOUT ---
     const cartItemsContainers = [
-        document.getElementById("cart-items-sidebar"),  // Sidebar
-        document.getElementById("cart-items-main")      // Main cart page
+        document.getElementById("cart-items-sidebar"), // Sidebar
+        document.getElementById("cart-items-main")     // Main cart page
     ];
 
     const cartTotals = [
-        document.getElementById("cart-total-sidebar"),  // Sidebar
-        document.getElementById("cart-total-main")      // Main cart page
+        document.querySelector("#cart-total-sidebar"), // Sidebar
+        document.querySelector("#cart-total-main")     // Main cart page
     ];
 
     const checkoutBtns = [
-        document.getElementById("checkout-sidebar"),    // Sidebar
-        document.getElementById("checkout-main")        // Main cart page
+        document.getElementById("checkout-sidebar"), // Sidebar
+        document.getElementById("checkout-main")     // Main cart page
     ];
 
     const clearCartBtns = [
-        document.getElementById("clear-cart-sidebar"),  // Sidebar
-        document.getElementById("clear-cart-main")      // Main cart page
+        document.getElementById("clear-cart-sidebar"), // Sidebar
+        document.getElementById("clear-cart-main")     // Main cart page
     ];
+
+    const orderSummaryContainer = document.getElementById("order-summary-items");
+    const orderTotalEl = document.getElementById("order-total");
 
     // --- FUNCTIONS ---
 
@@ -90,9 +93,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     renderCart();
                     updateCartCount();
                     updateCartTotal();
+                    renderOrderSummary();
                 });
             });
         });
+
+        renderOrderSummary();
     }
 
     // Add item to cart
@@ -140,6 +146,30 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "checkout.html";
         });
     });
+
+    // --- ORDER SUMMARY (Checkout Page) ---
+    function renderOrderSummary() {
+        if (!orderSummaryContainer || !orderTotalEl) return;
+
+        orderSummaryContainer.innerHTML = "";
+        if (cart.length === 0) {
+            orderSummaryContainer.innerHTML = "<p>Your cart is empty.</p>";
+            orderTotalEl.textContent = "₹0.00";
+            return;
+        }
+
+        cart.forEach(item => {
+            const div = document.createElement("div");
+            div.classList.add("summary-item");
+            div.innerHTML = `
+                <p>${item.name} x ${item.quantity} - ₹${(item.price * item.quantity).toFixed(2)}</p>
+            `;
+            orderSummaryContainer.appendChild(div);
+        });
+
+        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        orderTotalEl.textContent = `₹${total.toFixed(2)}`;
+    }
 
     // Open cart sidebar
     function openCartSidebar() {
