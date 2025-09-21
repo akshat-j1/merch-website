@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const links = document.querySelector(".links");
     const cartBtn = document.getElementById("cart-btn");
     const cartSidebar = document.getElementById("cart-sidebar");
-    const closeCartBtn = document.getElementById("close-cart-btn");
+    const closeCartBtn = document.getElementById("close-cart-btn") || document.getElementById("sidebar-close-btn");
     const overlay = document.getElementById("cart-overlay");
     const addToCartBtns = document.querySelectorAll(".add-to-cart");
 
@@ -17,24 +17,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- ELEMENT ARRAYS FOR SIDEBAR, MAIN CART, AND CHECKOUT ---
     const cartItemsContainers = [
-        document.getElementById("cart-items-sidebar"), // Sidebar
-        document.getElementById("cart-items-main")     // Main cart page
-    ];
+        document.getElementById("cart-items-sidebar"),
+        document.getElementById("cart-items-main"),
+        document.getElementById("sidebar-cart-items")
+    ].filter(Boolean);
 
     const cartTotals = [
-        document.querySelector("#cart-total-sidebar"), // Sidebar
-        document.querySelector("#cart-total-main")     // Main cart page
-    ];
+        document.getElementById("cart-total-sidebar"),
+        document.getElementById("cart-total-main"),
+        document.getElementById("sidebar-cart-total")
+    ].filter(Boolean);
 
     const checkoutBtns = [
-        document.getElementById("checkout-sidebar"), // Sidebar
-        document.getElementById("checkout-main")     // Main cart page
-    ];
+        document.getElementById("checkout-sidebar"),
+        document.getElementById("checkout-main"),
+        document.getElementById("sidebar-checkout-btn")
+    ].filter(Boolean);
 
     const clearCartBtns = [
-        document.getElementById("clear-cart-sidebar"), // Sidebar
-        document.getElementById("clear-cart-main")     // Main cart page
-    ];
+        document.getElementById("clear-cart-sidebar"),
+        document.getElementById("clear-cart-main"),
+        document.getElementById("sidebar-clear-cart-btn"),
+        document.getElementById("clear-cart-btn")
+    ].filter(Boolean);
 
     const orderSummaryContainer = document.getElementById("order-summary-items");
     const orderTotalEl = document.getElementById("order-total");
@@ -49,22 +54,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update cart count in navbar
     function updateCartCount() {
         const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-        const cartCountEl = document.getElementById("cart-count");
+        const cartCountEl = document.getElementById("cart-count") || document.getElementById("sidebar-cart-count");
         if (cartCountEl) cartCountEl.textContent = totalCount;
     }
 
     // Update cart totals
     function updateCartTotal() {
         const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        cartTotals.forEach(el => {
-            if (el) el.textContent = total.toFixed(2);
-        });
+        cartTotals.forEach(el => el.textContent = total.toFixed(2));
     }
 
-    // Render cart items in sidebar and main cart
+    // Render cart items
     function renderCart() {
         cartItemsContainers.forEach(container => {
-            if (!container) return;
             container.innerHTML = "";
             if (cart.length === 0) {
                 container.innerHTML = `<p class="empty-cart-message">Your cart is empty.</p>`;
@@ -84,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 container.appendChild(div);
             });
 
-            // Attach remove handlers
+            // Remove buttons
             container.querySelectorAll(".remove-btn").forEach(btn => {
                 btn.addEventListener("click", () => {
                     const index = btn.dataset.index;
@@ -109,11 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const img = btn.dataset.img;
 
             const existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ name, price, img, quantity: 1 });
-            }
+            if (existingItem) existingItem.quantity += 1;
+            else cart.push({ name, price, img, quantity: 1 });
 
             saveCart();
             renderCart();
@@ -125,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Clear cart
     clearCartBtns.forEach(btn => {
-        if (!btn) return;
         btn.addEventListener("click", () => {
             cart = [];
             saveCart();
@@ -137,7 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Checkout
     checkoutBtns.forEach(btn => {
-        if (!btn) return;
         btn.addEventListener("click", () => {
             if (cart.length === 0) {
                 alert("Your cart is empty!");
@@ -147,11 +144,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- ORDER SUMMARY (Checkout Page) ---
+    // Render order summary for checkout page
     function renderOrderSummary() {
         if (!orderSummaryContainer || !orderTotalEl) return;
-
         orderSummaryContainer.innerHTML = "";
+
         if (cart.length === 0) {
             orderSummaryContainer.innerHTML = "<p>Your cart is empty.</p>";
             orderTotalEl.textContent = "₹0.00";
@@ -161,9 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cart.forEach(item => {
             const div = document.createElement("div");
             div.classList.add("summary-item");
-            div.innerHTML = `
-                <p>${item.name} x ${item.quantity} - ₹${(item.price * item.quantity).toFixed(2)}</p>
-            `;
+            div.innerHTML = `<p>${item.name} x ${item.quantity} - ₹${(item.price * item.quantity).toFixed(2)}</p>`;
             orderSummaryContainer.appendChild(div);
         });
 
@@ -171,14 +166,15 @@ document.addEventListener("DOMContentLoaded", () => {
         orderTotalEl.textContent = `₹${total.toFixed(2)}`;
     }
 
-    // Open cart sidebar
+    // Sidebar open/close
     function openCartSidebar() {
+        if (!cartSidebar || !overlay) return;
         cartSidebar.classList.add("is-open");
         overlay.classList.add("is-visible");
     }
 
-    // Close cart sidebar
     function closeCartSidebar() {
+        if (!cartSidebar || !overlay) return;
         cartSidebar.classList.remove("is-open");
         overlay.classList.remove("is-visible");
     }
@@ -187,7 +183,12 @@ document.addEventListener("DOMContentLoaded", () => {
     closeCartBtn?.addEventListener("click", closeCartSidebar);
     overlay?.addEventListener("click", closeCartSidebar);
 
-    // --- SCROLL FADE-IN ANIMATION ---
+    // Mobile menu toggle
+    menuToggle?.addEventListener("click", () => {
+        links?.classList.toggle("is-active");
+    });
+
+    // Scroll fade-in animation
     const faders = document.querySelectorAll(".fade-in-section");
     const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -198,11 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, appearOptions);
     faders.forEach(fader => appearOnScroll.observe(fader));
-
-    // --- MOBILE MENU TOGGLE ---
-    menuToggle?.addEventListener("click", () => {
-        links.classList.toggle("is-active");
-    });
 
     // --- INITIAL RENDER ---
     renderCart();
