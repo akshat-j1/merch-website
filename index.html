@@ -3,154 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercancía</title>
+    <title>Mercancía - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script type="module" defer src="js/main.js"></script>
 </head>
 <body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Mercancía</div>
+        <button id="menu-toggle" aria-label="Toggle navigation menu">
+            <div class="hamburger"></div>
+        </button>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="posters.html">Posters</a>
+            <a href="stickers.html">Stickers</a>
+            <a href="hoodies.html">Hoodies</a>
+            <a href="couple-shirts.html">Couple Shirts</a>
+            <a href="anime-figures.html">Anime Figures</a>
+            <a href="#customize">Customize</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="cart-link-desktop">
+            <a href="#" id="cart-btn">🛒 Cart <span id="cart-count">0</span></a>
+        </div>
+    </nav>
 
-<nav>
-    <div class="logo">Mercancía</div>
-    <button id="menu-toggle" aria-label="Toggle navigation menu">
-        <div class="hamburger"></div>
-    </button>
-    <div class="links">
-        <a href="#posters">Posters</a>
-        <a href="#stickers">Stickers</a>
-        <a href="#hoodies">Hoodies</a>
-        <a href="#couple-shirts">Couple Shirts</a>
-        <a href="#anime-figures">Anime Figures</a>
-        <a href="#customize">Customize</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <div class="cart-link-desktop">
-        <a href="#" id="cart-btn">🛒 Cart <span id="sidebar-cart-count">0</span></a>
-    </div>
-</nav>
-
-<main>
-    <section class="hero" id="home">
+    <!-- HERO -->
+    <section class="hero fade-in-section">
         <h1>Welcome to Mercancía</h1>
-        <p>Trendy Shirts, Hoodies, Caps & More for Everyone</p>
+        <p>Discover unique posters, stickers, hoodies, and anime figures to express yourself!</p>
+        <a href="#featured-products" class="btn">Shop Now</a>
     </section>
 
-    <div id="shop" class="fade-in-section">
-        <!-- Posters Section -->
-        <section id="posters">
-            <h2>Posters</h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="images/poster1.jpeg" alt="A minimalist black and white abstract poster.">
-                    <h3>Poster 1</h3>
-                    <p>₹499</p>
-                    <button class="btn add-to-cart" data-name="Poster 1" data-price="499" data-img="images/poster1.jpeg">Add to Cart</button>
-                </div>
-                <!-- Repeat other poster cards as before -->
+    <!-- FEATURED PRODUCTS -->
+    <section id="featured-products" class="fade-in-section">
+        <h2>Featured Stickers</h2>
+        <div class="grid" id="stickers-grid">
+            <!-- First 3 visible items -->
+            <div class="card">
+                <img src="images/sticker1.jpeg" alt="Sticker 1">
+                <h3>Sticker 1</h3>
+                <p>₹199</p>
+                <button class="btn add-to-cart" data-name="Sticker 1" data-price="199" data-img="images/sticker1.jpeg">Add to Cart</button>
             </div>
-        </section>
-
-        <!-- Stickers Section -->
-        <section id="stickers">
-            <h2>Stickers</h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="images/sticker1.jpeg" alt="Assorted anime and pop culture vinyl stickers.">
-                    <h3>Sticker 1</h3>
-                    <p>₹199</p>
-                    <button class="btn add-to-cart" data-name="Sticker 1" data-price="199" data-img="images/sticker1.jpeg">Add to Cart</button>
-                </div>
-                <!-- Repeat other sticker cards as before -->
+            <div class="card">
+                <img src="images/sticker2.jpeg" alt="Sticker 2">
+                <h3>Sticker 2</h3>
+                <p>₹199</p>
+                <button class="btn add-to-cart" data-name="Sticker 2" data-price="199" data-img="images/sticker2.jpeg">Add to Cart</button>
             </div>
-        </section>
-
-        <!-- Hoodies Section -->
-        <section id="hoodies">
-            <h2>Hoodies</h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="images/hoodie1.jpeg" alt="A comfortable black pullover hoodie.">
-                    <h3>Hoodie 1</h3>
-                    <p>₹1499</p>
-                    <button class="btn add-to-cart" data-name="Hoodie 1" data-price="1499" data-img="images/hoodie1.jpeg">Add to Cart</button>
-                </div>
-                <!-- Repeat other hoodie cards as before -->
+            <div class="card">
+                <img src="images/sticker3.jpeg" alt="Sticker 3">
+                <h3>Sticker 3</h3>
+                <p>₹199</p>
+                <button class="btn add-to-cart" data-name="Sticker 3" data-price="199" data-img="images/sticker3.jpeg">Add to Cart</button>
             </div>
-        </section>
 
-        <!-- Couple Shirts Section -->
-        <section id="couple-shirts">
-            <h2>Couple Shirts</h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="images/coupleshirt1.jpeg" alt="Matching t-shirts for couples.">
-                    <h3>Couple Shirt 1</h3>
-                    <p>₹999</p>
-                    <button class="btn add-to-cart" data-name="Couple Shirt 1" data-price="999" data-img="images/coupleshirt1.jpeg">Add to Cart</button>
-                </div>
-                <!-- Repeat other couple shirt cards -->
+            <!-- Hidden items -->
+            <div class="card hidden">
+                <img src="images/sticker4.jpeg" alt="Sticker 4">
+                <h3>Sticker 4</h3>
+                <p>₹199</p>
+                <button class="btn add-to-cart" data-name="Sticker 4" data-price="199" data-img="images/sticker4.jpeg">Add to Cart</button>
             </div>
-        </section>
-
-        <!-- Anime Figures Section -->
-        <section id="anime-figures">
-            <h2>Anime Figures</h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="images/animefigure1.jpeg" alt="A detailed anime figure.">
-                    <h3>Anime Figure 1</h3>
-                    <p>₹1499</p>
-                    <button class="btn add-to-cart" data-name="Anime Figure 1" data-price="1499" data-img="images/animefigure1.jpeg">Add to Cart</button>
-                </div>
-                <!-- Repeat other anime figure cards -->
+            <div class="card hidden">
+                <img src="images/sticker5.jpeg" alt="Sticker 5">
+                <h3>Sticker 5</h3>
+                <p>₹199</p>
+                <button class="btn add-to-cart" data-name="Sticker 5" data-price="199" data-img="images/sticker5.jpeg">Add to Cart</button>
             </div>
-        </section>
-
-        <!-- Customize Section -->
-        <section id="customize" class="fade-in-section">
-            <h2>Customize Your Product</h2>
-            <form id="customize-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="request" placeholder="Type your custom request here..." rows="5" required></textarea>
-                <button type="submit" class="btn">Send Request</button>
-            </form>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="fade-in-section">
-            <h2>Contact Us</h2>
-            <p>Phone 1: <a href="tel:+919997175745">+91 99971 75745</a></p>
-            <p>Phone 2: <a href="tel:+919082274205">+91 90822 74205</a></p>
-            <p>Phone 3: <a href="tel:+919821434183">+91 98214 34183</a></p>
-            <p>Email: <a href="mailto:info@mercancia.com">info@mercancia.com</a></p>
-            <p>Instagram: <a href="https://instagram.com/mercancia" target="_blank">@mercancia</a></p>
-        </section>
-    </div>
-</main>
-
-<footer>
-    &copy; 2025 Mercancía. All rights reserved.
-</footer>
-
-<!-- Sidebar Cart -->
-<div id="cart-sidebar" class="sidebar">
-    <div class="sidebar-header">
-        <h2>Your Cart</h2>
-        <button id="sidebar-close-btn" class="close-btn" aria-label="Close Cart">&times;</button>
-    </div>
-    <div id="sidebar-cart-items" class="sidebar-content">
-        <p class="empty-cart-message">Your cart is empty.</p>
-    </div>
-    <div class="sidebar-footer">
-        <h3>Total: ₹<span id="sidebar-cart-total">0.00</span></h3>
-        <div id="sidebar-checkout-section">
-            <button id="sidebar-checkout-btn" class="btn checkout-btn">Proceed to Checkout</button>
         </div>
-        <button id="sidebar-clear-cart-btn" class="btn clear-cart-btn">Clear Cart</button>
-    </div>
-</div>
-<div id="cart-overlay" class="overlay"></div>
 
+        <div class="show-more-container">
+            <button class="btn-show-more" id="show-more-btn">Show More</button>
+        </div>
+    </section>
+
+    <!-- CUSTOMIZE SECTION -->
+    <section id="customize" class="fade-in-section">
+        <h2>Customize Your Merchandise</h2>
+        <p>Create something unique just for you!</p>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="fade-in-section">
+        <h2>Contact Us</h2>
+        <p>Have questions or requests? Reach out to us!</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; 2025 Mercancía. All rights reserved.
+    </footer>
+
+    <!-- CART SIDEBAR -->
+    <div id="cart-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Your Cart</h2>
+            <button id="close-cart-btn" class="close-btn">&times;</button>
+        </div>
+        <div id="cart-items-sidebar" class="sidebar-content"></div>
+        <div class="sidebar-footer">
+            <h3>Total: ₹<span id="cart-total-sidebar">0.00</span></h3>
+            <button id="checkout-sidebar" class="btn checkout-btn">Proceed to Checkout</button>
+            <button id="clear-cart-sidebar" class="btn clear-cart-btn">Clear Cart</button>
+        </div>
+    </div>
+    <div id="cart-overlay" class="overlay"></div>
 </body>
 </html>
