@@ -1,192 +1,159 @@
-// ==========================
-// GLOBAL VARIABLES
-// ==========================
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// ================================
+// MAIN.JS - MERCANCÍA
+// ================================
 
-// Sidebar elements
-const sidebarCartItems = document.getElementById("sidebar-cart-items");
-const sidebarCartTotal = document.getElementById("sidebar-cart-total");
-const sidebarCheckoutBtn = document.getElementById("sidebar-checkout-btn");
-const sidebarClearCartBtn = document.getElementById("sidebar-clear-cart-btn");
+document.addEventListener("DOMContentLoaded", () => {
+    // --- ELEMENTS ---
+    const menuToggle = document.getElementById("menu-toggle");
+    const links = document.querySelector(".links");
+    const cartBtn = document.getElementById("cart-btn");
+    const cartSidebar = document.getElementById("cart-sidebar");
+    const closeCartBtn = document.getElementById("close-cart-btn");
+    const overlay = document.getElementById("cart-overlay");
+    const cartItemsContainer = document.querySelectorAll("#cart-items");
+    const cartCountEl = document.getElementById("cart-count");
+    const cartTotalEl = document.querySelectorAll("#cart-total");
+    const checkoutBtns = document.querySelectorAll("#checkout-btn");
+    const clearCartBtns = document.querySelectorAll("#clear-cart-btn");
+    const addToCartBtns = document.querySelectorAll(".add-to-cart");
 
-// Main cart page elements (may not exist on all pages)
-const mainCartItems = document.getElementById("main-cart-items");
-const mainCartTotal = document.getElementById("main-cart-total");
-const mainCheckoutBtn = document.getElementById("main-checkout-btn");
-const mainClearCartBtn = document.getElementById("main-clear-cart-btn");
+    // --- CART STATE ---
+    let cart = JSON.parse(localStorage.getItem("mercanciaCart")) || [];
 
-// Cart icon
-const cartBtn = document.getElementById("cart-btn");
-const cartOverlay = document.getElementById("cart-overlay");
-const cartSidebar = document.getElementById("cart-sidebar");
-const closeCartBtn = document.getElementById("close-cart-btn");
+    // --- FUNCTIONS ---
 
-// ==========================
-// CART FUNCTIONS
-// ==========================
-function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-function addToCart(item) {
-    const existingItem = cart.find(i => i.name === item.name);
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        item.quantity = 1;
-        cart.push(item);
-    }
-    saveCart();
-    updateAllCarts();
-}
-
-function removeFromCart(name) {
-    cart = cart.filter(item => item.name !== name);
-    saveCart();
-    updateAllCarts();
-}
-
-function clearCart() {
-    cart = [];
-    saveCart();
-    updateAllCarts();
-}
-
-function calculateTotal() {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-}
-
-// ==========================
-// RENDER FUNCTIONS
-// ==========================
-function renderCart(container, totalElement) {
-    if (!container || !totalElement) return;
-
-    container.innerHTML = "";
-    if (cart.length === 0) {
-        container.innerHTML = `<p class="empty-cart-message">Your cart is empty.</p>`;
-        totalElement.textContent = "0.00";
-        return;
+    // Save cart to localStorage
+    function saveCart() {
+        localStorage.setItem("mercanciaCart", JSON.stringify(cart));
     }
 
-    cart.forEach(item => {
-        const div = document.createElement("div");
-        div.classList.add("cart-item");
-        div.innerHTML = `
-            <img src="${item.img}" alt="${item.name}">
-            <div class="details">
-                <h4>${item.name}</h4>
-                <p>₹${item.price} x ${item.quantity}</p>
-            </div>
-            <button class="remove-btn">&times;</button>
-        `;
-        const removeBtn = div.querySelector(".remove-btn");
-        removeBtn.addEventListener("click", () => removeFromCart(item.name));
-        container.appendChild(div);
+    // Update cart count in navbar
+    function updateCartCount() {
+        const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        if (cartCountEl) cartCountEl.textContent = totalCount;
+    }
+
+    // Update cart totals
+    function updateCartTotal() {
+        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        cartTotalEl.forEach(el => el.textContent = total.toFixed(2));
+    }
+
+    // Render cart items in sidebar
+    function renderCart() {
+        cartItemsContainer.forEach(container => {
+            container.innerHTML = "";
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="empty-cart-message">Your cart is empty.</p>`;
+                return;
+            }
+            cart.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.classList.add("cart-item");
+                div.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="details">
+                        <h4>${item.name}</h4>
+                        <p>₹${item.price} x ${item.quantity}</p>
+                    </div>
+                    <button class="remove-btn" data-index="${index}">&times;</button>
+                `;
+                container.appendChild(div);
+            });
+
+            // Attach remove handlers
+            container.querySelectorAll(".remove-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const index = btn.dataset.index;
+                    cart.splice(index, 1);
+                    saveCart();
+                    renderCart();
+                    updateCartCount();
+                    updateCartTotal();
+                });
+            });
+        });
+    }
+
+    // Add item to cart
+    addToCartBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const name = btn.dataset.name;
+            const price = parseFloat(btn.dataset.price);
+            const img = btn.dataset.img;
+
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, img, quantity: 1 });
+            }
+
+            saveCart();
+            renderCart();
+            updateCartCount();
+            updateCartTotal();
+            openCartSidebar();
+        });
     });
 
-    totalElement.textContent = calculateTotal().toFixed(2);
-}
-
-function updateAllCarts() {
-    renderCart(sidebarCartItems, sidebarCartTotal);
-    renderCart(mainCartItems, mainCartTotal);
-
-    const cartCountSpans = document.querySelectorAll("#cart-count");
-    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCountSpans.forEach(span => (span.textContent = totalQuantity));
-}
-
-// ==========================
-// ADD TO CART BUTTONS
-// ==========================
-const addToCartBtns = document.querySelectorAll(".add-to-cart");
-addToCartBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const item = {
-            name: btn.dataset.name,
-            price: parseFloat(btn.dataset.price),
-            img: btn.dataset.img
-        };
-        addToCart(item);
+    // Clear cart
+    clearCartBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            cart = [];
+            saveCart();
+            renderCart();
+            updateCartCount();
+            updateCartTotal();
+        });
     });
-});
 
-// ==========================
-// SIDEBAR TOGGLE
-// ==========================
-if (cartBtn && cartSidebar && cartOverlay && closeCartBtn) {
-    const openSidebar = () => {
+    // Checkout
+    checkoutBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            window.location.href = "checkout.html";
+        });
+    });
+
+    // Open cart sidebar
+    function openCartSidebar() {
         cartSidebar.classList.add("is-open");
-        cartOverlay.classList.add("is-visible");
-    };
-
-    const closeSidebar = () => {
-        cartSidebar.classList.remove("is-open");
-        cartOverlay.classList.remove("is-visible");
-    };
-
-    cartBtn.addEventListener("click", openSidebar);
-    closeCartBtn.addEventListener("click", closeSidebar);
-    cartOverlay.addEventListener("click", closeSidebar);
-}
-
-// ==========================
-// CLEAR & CHECKOUT BUTTONS
-// ==========================
-if (sidebarClearCartBtn) sidebarClearCartBtn.addEventListener("click", clearCart);
-if (mainClearCartBtn) mainClearCartBtn.addEventListener("click", clearCart);
-
-if (sidebarCheckoutBtn) sidebarCheckoutBtn.addEventListener("click", () => {
-    window.location.href = "checkout.html";
-});
-if (mainCheckoutBtn) mainCheckoutBtn.addEventListener("click", () => {
-    window.location.href = "checkout.html";
-});
-
-// ==========================
-// CHECKOUT PAGE (summary & form)
-// ==========================
-const orderSummaryContainer = document.getElementById("order-summary-items");
-const orderTotalElement = document.getElementById("order-total");
-const checkoutForm = document.getElementById("checkout-form");
-
-function renderCheckoutSummary() {
-    if (!orderSummaryContainer || !orderTotalElement) return;
-    orderSummaryContainer.innerHTML = "";
-
-    if (cart.length === 0) {
-        orderSummaryContainer.innerHTML = `<p>Your cart is empty.</p>`;
-        orderTotalElement.textContent = "0.00";
-        return;
+        overlay.classList.add("is-visible");
     }
 
-    cart.forEach(item => {
-        const div = document.createElement("div");
-        div.classList.add("summary-item");
-        div.innerHTML = `
-            <span>${item.name} x ${item.quantity}</span>
-            <span>₹${(item.price * item.quantity).toFixed(2)}</span>
-        `;
-        orderSummaryContainer.appendChild(div);
+    // Close cart sidebar
+    function closeCartSidebar() {
+        cartSidebar.classList.remove("is-open");
+        overlay.classList.remove("is-visible");
+    }
+
+    cartBtn?.addEventListener("click", openCartSidebar);
+    closeCartBtn?.addEventListener("click", closeCartSidebar);
+    overlay?.addEventListener("click", closeCartSidebar);
+
+    // --- SCROLL FADE-IN ANIMATION ---
+    const faders = document.querySelectorAll(".fade-in-section");
+    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+        });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // --- MOBILE MENU TOGGLE ---
+    menuToggle?.addEventListener("click", () => {
+        links.classList.toggle("is-active");
     });
 
-    orderTotalElement.textContent = calculateTotal().toFixed(2);
-}
-
-if (checkoutForm) {
-    renderCheckoutSummary();
-
-    checkoutForm.addEventListener("submit", e => {
-        e.preventDefault();
-        alert("Order placed successfully!");
-        clearCart();
-        checkoutForm.reset();
-        window.location.href = "index.html";
-    });
-}
-
-// ==========================
-// INITIALIZE
-// ==========================
-updateAllCarts();
+    // --- INITIAL RENDER ---
+    renderCart();
+    updateCartCount();
+    updateCartTotal();
+});
