@@ -17,23 +17,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- ELEMENT ARRAYS FOR SIDEBAR + MAIN CART ---
     const cartItemsContainers = [
-        document.getElementById("cart-items"),        // Sidebar
-        document.getElementById("main-cart-items")   // Main cart page
+        document.getElementById("cart-items-sidebar"),  // Sidebar
+        document.getElementById("cart-items-main")      // Main cart page
     ];
 
     const cartTotals = [
-        document.querySelector("#cart-total"),        // Sidebar
-        document.querySelector("#main-cart-total")    // Main cart page
+        document.getElementById("cart-total-sidebar"),  // Sidebar
+        document.getElementById("cart-total-main")      // Main cart page
     ];
 
     const checkoutBtns = [
-        document.getElementById("checkout-btn"),        // Sidebar
-        document.getElementById("main-checkout-btn")    // Main cart page
+        document.getElementById("checkout-sidebar"),    // Sidebar
+        document.getElementById("checkout-main")        // Main cart page
     ];
 
     const clearCartBtns = [
-        document.getElementById("clear-cart-btn"),        // Sidebar
-        document.getElementById("main-clear-cart-btn")    // Main cart page
+        document.getElementById("clear-cart-sidebar"),  // Sidebar
+        document.getElementById("clear-cart-main")      // Main cart page
     ];
 
     // --- FUNCTIONS ---
