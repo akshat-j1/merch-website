@@ -10,15 +10,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartSidebar = document.getElementById("cart-sidebar");
     const closeCartBtn = document.getElementById("close-cart-btn");
     const overlay = document.getElementById("cart-overlay");
-    const cartItemsContainer = document.querySelectorAll("#cart-items");
-    const cartCountEl = document.getElementById("cart-count");
-    const cartTotalEl = document.querySelectorAll("#cart-total");
-    const checkoutBtns = document.querySelectorAll("#checkout-btn");
-    const clearCartBtns = document.querySelectorAll("#clear-cart-btn");
     const addToCartBtns = document.querySelectorAll(".add-to-cart");
 
     // --- CART STATE ---
     let cart = JSON.parse(localStorage.getItem("mercanciaCart")) || [];
+
+    // --- ELEMENT ARRAYS FOR SIDEBAR + MAIN CART ---
+    const cartItemsContainers = [
+        document.getElementById("cart-items"),        // Sidebar
+        document.getElementById("main-cart-items")   // Main cart page
+    ];
+
+    const cartTotals = [
+        document.querySelector("#cart-total"),        // Sidebar
+        document.querySelector("#main-cart-total")    // Main cart page
+    ];
+
+    const checkoutBtns = [
+        document.getElementById("checkout-btn"),        // Sidebar
+        document.getElementById("main-checkout-btn")    // Main cart page
+    ];
+
+    const clearCartBtns = [
+        document.getElementById("clear-cart-btn"),        // Sidebar
+        document.getElementById("main-clear-cart-btn")    // Main cart page
+    ];
 
     // --- FUNCTIONS ---
 
@@ -30,18 +46,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update cart count in navbar
     function updateCartCount() {
         const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const cartCountEl = document.getElementById("cart-count");
         if (cartCountEl) cartCountEl.textContent = totalCount;
     }
 
     // Update cart totals
     function updateCartTotal() {
         const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        cartTotalEl.forEach(el => el.textContent = total.toFixed(2));
+        cartTotals.forEach(el => {
+            if (el) el.textContent = total.toFixed(2);
+        });
     }
 
-    // Render cart items in sidebar
+    // Render cart items in sidebar and main cart
     function renderCart() {
-        cartItemsContainer.forEach(container => {
+        cartItemsContainers.forEach(container => {
+            if (!container) return;
             container.innerHTML = "";
             if (cart.length === 0) {
                 container.innerHTML = `<p class="empty-cart-message">Your cart is empty.</p>`;
@@ -99,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Clear cart
     clearCartBtns.forEach(btn => {
+        if (!btn) return;
         btn.addEventListener("click", () => {
             cart = [];
             saveCart();
@@ -110,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Checkout
     checkoutBtns.forEach(btn => {
+        if (!btn) return;
         btn.addEventListener("click", () => {
             if (cart.length === 0) {
                 alert("Your cart is empty!");
