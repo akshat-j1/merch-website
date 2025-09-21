@@ -35,12 +35,13 @@
         <h1>Your Shopping Cart</h1>
     </section>
 
-    <section id="cart" class="fade-in-section">
-        <div id="cart-items"></div>
-        <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+    <!-- Main Cart Section -->
+    <section id="cart-main" class="fade-in-section">
+        <div id="cart-items-main"></div>
+        <h3>Total: ₹<span id="cart-total-main">0.00</span></h3>
         <div class="cart-buttons">
-            <button id="clear-cart-btn" class="btn">Clear Cart</button>
-            <button id="checkout-btn" class="btn">Proceed to Checkout</button>
+            <button id="clear-cart-main" class="btn">Clear Cart</button>
+            <button id="checkout-main" class="btn">Proceed to Checkout</button>
         </div>
     </section>
 </main>
@@ -55,15 +56,15 @@
         <h2>Your Cart</h2>
         <button id="close-cart-btn" class="close-btn">&times;</button>
     </div>
-    <div id="cart-items" class="sidebar-content">
+    <div id="cart-items-sidebar" class="sidebar-content">
         <!-- Cart items will be rendered here -->
     </div>
     <div class="sidebar-footer">
-        <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+        <h3>Total: ₹<span id="cart-total-sidebar">0.00</span></h3>
         <div id="checkout-section">
-            <button id="checkout-btn" class="btn checkout-btn">Proceed to Checkout</button>
+            <button id="checkout-sidebar" class="btn checkout-btn">Proceed to Checkout</button>
         </div>
-        <button id="clear-cart-btn" class="btn clear-cart-btn">Clear Cart</button>
+        <button id="clear-cart-sidebar" class="btn clear-cart-btn">Clear Cart</button>
     </div>
 </div>
 <div id="cart-overlay" class="overlay"></div>
