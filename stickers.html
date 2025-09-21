@@ -9,10 +9,9 @@
     <script type="module" defer src="js/main.js"></script>
 </head>
 <body>
-
 <nav>
     <div class="logo">Mercancía</div>
-    <button id="menu-toggle" aria-label="Toggle navigation menu">
+    <button id="menu-toggle-stickers" aria-label="Toggle navigation menu">
         <div class="hamburger"></div>
     </button>
     <div class="links">
@@ -26,7 +25,7 @@
         <a href="index.html#contact">Contact</a>
     </div>
     <div class="cart-link-desktop">
-        <a href="#" id="cart-btn">🛒 Cart <span id="cart-count">0</span></a>
+        <a href="#" id="cart-btn-stickers">🛒 Cart <span id="cart-count-stickers">0</span></a>
     </div>
 </nav>
 
@@ -77,23 +76,20 @@
 </footer>
 
 <!-- Cart Sidebar -->
-<div id="cart-sidebar" class="sidebar">
+<div id="cart-sidebar-stickers" class="sidebar">
     <div class="sidebar-header">
         <h2>Your Cart</h2>
-        <button id="close-cart-btn" class="close-btn">&times;</button>
+        <button id="close-cart-btn-stickers" class="close-btn">&times;</button>
     </div>
-    <div id="cart-items" class="sidebar-content">
-        <!-- Cart items will be rendered here -->
-    </div>
+    <div id="cart-items-stickers" class="sidebar-content"></div>
     <div class="sidebar-footer">
-        <h3>Total: ₹<span id="cart-total">0.00</span></h3>
-        <div id="checkout-section">
-            <button id="checkout-btn" class="btn checkout-btn">Proceed to Checkout</button>
+        <h3>Total: ₹<span id="cart-total-stickers">0.00</span></h3>
+        <div id="checkout-section-stickers">
+            <button id="checkout-btn-stickers" class="btn checkout-btn">Proceed to Checkout</button>
         </div>
-        <button id="clear-cart-btn" class="btn clear-cart-btn">Clear Cart</button>
+        <button id="clear-cart-btn-stickers" class="btn clear-cart-btn">Clear Cart</button>
     </div>
 </div>
-<div id="cart-overlay" class="overlay"></div>
-
+<div id="cart-overlay-stickers" class="overlay"></div>
 </body>
 </html>
